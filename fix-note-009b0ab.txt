@@ -1,0 +1,1 @@
+Force another fresh deployment after asset helper patch.
