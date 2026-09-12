@@ -2,9 +2,11 @@
   "name": "quasar-motion-company",
   "version": "1.0.0",
   "private": true,
-  "engines": { "node": "24.x" },
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
-    "build": "cat project.b64.* | base64 -d > project.tgz && tar -xzf project.tgz && python3 - <<'PY'\nfrom pathlib import Path\np=Path('app/page.tsx')\ns=p.read_text()\ns=s.replace('const asset = (name: string) => `/assets/${name}`;', 'const asset = (name: string) => `https://raw.githubusercontent.com/yanekissayabully/quasarsite/main/public/assets/${name}`;')\np.write_text(s)\nPY\nvite build --config vite.vercel.config.ts"
+    "build": "cat project.b64.* | base64 -d > project.tgz && tar -xzf project.tgz && python3 - <<'PY'\nfrom pathlib import Path\np=Path('app/page.tsx')\ns=p.read_text()\ns=s.replace(\"const asset = (name: string) => `https://raw.githubusercontent.com/yanekissayabully/quasarsite/main/public/assets/${name}`;\", \"const asset = (name: string) => `/assets/${name}`;\")\ns=s.replace('const cover = p.thumb || p.images[0];', 'const cover = p.videoThumb && p.videos[0] ? `https://vumbnail.com/${p.videos[0]}.jpg` : (p.thumb || p.images[0]);')\ns=s.replace('<img src={asset(\"quasar-header-logo-cropped.png\")} alt=\"QUASAR MOTION COMPANY\" />', '<span className=\"wordmark-text\">QUASAR MOTION COMPANY</span>')\np.write_text(s)\ncss=Path('app/motion.css')\ntxt=css.read_text()\nextra='''\n.wordmark-text {\n  display: inline-flex;\n  align-items: center;\n  color: #ffffff;\n  font-weight: 800;\n  letter-spacing: 0.08em;\n  font-size: 13px;\n  white-space: nowrap;\n  text-transform: uppercase;\n}\n.header-logo-art .wordmark-text { position: relative; z-index: 2; }\n.tile img[src^=\"https://vumbnail.com/\"] { object-fit: cover; }\n'''\nif '.wordmark-text {' not in txt:\n    css.write_text(txt + extra)\nPY\nvite build --config vite.vercel.config.ts"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
