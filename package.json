@@ -4,7 +4,7 @@
   "private": true,
   "engines": { "node": "24.x" },
   "scripts": {
-    "build": "cat project.b64.* | base64 -d > project.tgz && tar -xzf project.tgz && sed -i 's#const asset = (name: string) => `/assets/${name}`;#const asset = (name: string) => `https://quasarsite-5s72tmu7i-quasarmotion3d.vercel.app/assets/${name}`;#' app/page.tsx && sed -i 's#url(\"/quasar-header-logo-cropped.png\")#url(\"https://quasarsite-5s72tmu7i-quasarmotion3d.vercel.app/quasar-header-logo-cropped.png\")#g' app/interaction-fixes.css && sed -i 's#href=\"/favicon.ico\"#href=\"https://quasarsite-5s72tmu7i-quasarmotion3d.vercel.app/favicon.ico\"#' index.html && vite build --config vite.vercel.config.ts"
+    "build": "cat project.b64.* | base64 -d > project.tgz && tar -xzf project.tgz && mkdir -p public/assets && if [ -f assets-upload/quasar-header-logo-cropped.png ]; then cp assets-upload/* public/assets/ && cp assets-upload/quasar-header-logo-cropped.png public/quasar-header-logo-cropped.png && cp assets-upload/favicon.ico public/favicon.ico; fi && vite build --config vite.vercel.config.ts"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
