@@ -4,7 +4,7 @@
   "private": true,
   "engines": { "node": "24.x" },
   "scripts": {
-    "build": "tar -xzf project.tgz && vite build --config vite.vercel.config.ts"
+    "build": "cat project.b64.* | base64 -d > project.tgz && tar -xzf project.tgz && vite build --config vite.vercel.config.ts"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
