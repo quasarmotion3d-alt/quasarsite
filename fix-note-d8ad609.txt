@@ -1,1 +1,0 @@
-Commit d8ad609 points the production asset helper to the original public repository assets, preserving the Logic website card while restoring images.

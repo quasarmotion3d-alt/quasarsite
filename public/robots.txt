@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quasarmotion-site-final.vercel.app/sitemap.xml

@@ -1,0 +1,1457 @@
+/* Controlled, premium motion: no scroll-linked media movement or layout shift. */
+:where(.tile){transform:none!important;transition:border-color .38s ease,box-shadow .38s ease,background-color .38s ease!important;will-change:box-shadow}
+:where(.tile)>img{transform:scale(1)!important;transition:transform .45s cubic-bezier(.22,.61,.36,1),filter .45s ease!important;transform-origin:center!important}
+:where(.tile):hover>img{transform:scale(1.02)!important;filter:saturate(1.04) brightness(1.03)}
+:where(.tile):hover{border-color:rgba(112,177,255,.42)!important;box-shadow:0 14px 42px rgba(0,0,0,.28),0 0 0 1px rgba(83,157,242,.12)!important}
+:where(.tile) .tile-info strong{font-weight:500!important;transition:transform .35s ease,color .35s ease!important}
+:where(.tile) .tile-info strong{font-size:clamp(18px,1.65vw,26px)!important;line-height:1.08!important;letter-spacing:-.025em!important}
+:where(.tile):hover .tile-info strong{transform:translateY(-4px)}
+:where(.tile) .tile-info small{transition:color .3s ease!important}
+:where(.tile):hover .tile-info small{color:#79bbff!important}
+.tile-biometal>img{height:100%!important;object-fit:cover!important;object-position:center!important}
+.project-modal[data-state="open"]{animation:quasar-modal-in .55s cubic-bezier(.22,.61,.36,1) both}
+.project-modal[data-state="closed"]{animation:quasar-modal-out .3s ease both}
+@keyframes quasar-modal-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes quasar-modal-out{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(14px)}}
+.topbar{isolation:isolate;overflow:hidden}
+.topbar:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(110deg,transparent 20%,rgba(130,190,255,.09) 48%,transparent 72%);background-size:220% 100%;background-position:120% 0;transition:background-position .9s cubic-bezier(.22,.61,.36,1),opacity .5s ease;opacity:.4}
+.topbar:hover:before{background-position:-20% 0;opacity:.8}
+.topbar nav a{transition:color .3s ease,transform .3s ease!important}
+.topbar nav a:hover{transform:translateY(-2px)}
+.topbar{height:132px!important;top:18px!important;border-radius:34px!important;background:linear-gradient(115deg,rgba(29,36,47,.88),rgba(13,18,27,.82) 56%,rgba(22,45,79,.78))!important;border:1px solid rgba(161,191,230,.48)!important;box-shadow:0 18px 48px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(105,158,230,.2)!important}
+.topbar-inner{padding:0 48px!important}
+.topbar nav{gap:22px!important}
+.topbar nav a{font-size:clamp(14px,1.1vw,23px)!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important;color:rgba(244,247,252,.9)!important}
+.topbar nav a{font-weight:400!important;font-size:clamp(13px,1vw,20px)!important}
+.topbar nav a:first-child{color:#70b4ff!important}
+.topbar nav a:after,.topbar nav a:first-child:after{content:""!important;display:block!important;left:50%!important;bottom:18px!important;width:28px!important;height:2px!important;border-radius:2px!important;background:linear-gradient(90deg,#62b5ff,#347cf1)!important;box-shadow:0 0 12px rgba(73,157,255,.48)!important;transform:translateX(-50%) scaleX(1)!important;opacity:1!important}
+.topbar nav a:not(:first-child):after{transform:translateX(-50%) scaleX(0)!important;opacity:0!important;transition:transform .3s ease,opacity .3s ease!important}
+.topbar nav a:not(:first-child):hover:after{transform:translateX(-50%) scaleX(1)!important;opacity:.8!important}
+.topbar .wordmark{transform:none!important}
+.studio-services>strong{overflow:hidden!important;clip-path:inset(0 round 8px)!important}
+.studio-services>strong:after{left:0!important;right:0!important;max-width:100%!important}
+.reel-head{margin-bottom:12px!important}
+.reel-head h2:after{font-size:clamp(18px,1.75vw,27px)!important;font-weight:400!important;color:#aebbc9!important}
+.contact-block>a{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important}
+.contact-block>a svg{transition:transform .45s cubic-bezier(.22,.61,.36,1),color .3s ease!important;will-change:transform}
+.contact-block>a:hover svg{transform:translateX(8px)!important;color:#75baff!important}
+.studio-services>strong{transition:background .35s ease,color .35s ease,transform .35s ease!important}
+.studio-services>strong:hover{transform:translateY(-3px)!important;background:linear-gradient(135deg,rgba(67,126,198,.16),rgba(10,16,28,.1))!important}
+.reel-head h2{font-weight:500!important}
+.credit-context{margin:0 0 12px!important;color:#8e9aaa!important;font-size:12px!important;line-height:1.5!important;font-weight:400!important}
+.portfolio-bar{position:relative!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}.topbar:before{display:none!important}.tile:hover>img{transform:none!important}.tile:hover .tile-info strong{transform:none!important}}
+@media (hover:none),(pointer:coarse){.topbar:hover:before{background-position:120% 0;opacity:.4}.tile:hover>img,.tile:hover .tile-info strong{transform:none!important}.tile:hover{box-shadow:none!important}}
+@media (max-width:900px){.topbar{height:88px!important;border-radius:28px!important}.topbar-inner{padding:0 24px!important}.topbar nav a{font-size:14px!important}.topbar nav{gap:8px!important}}
+@media (max-width:520px){.topbar{height:74px!important;border-radius:24px!important}.topbar-inner{padding:0 18px!important}.topbar nav a{font-size:12px!important}.topbar nav a:after,.topbar nav a:first-child:after{bottom:10px!important;width:22px!important}}
+
+/* Stable portfolio system: a single 4:3 grid, with reveal applied to the
+   container only. Legacy masonry sizes cannot affect cards anymore. */
+.mosaic{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:auto!important;gap:14px!important}
+.mosaic>.tile,.mosaic>.tile.wide,.mosaic>.tile.tall,.mosaic>.tile.featured{grid-column:span 1!important;grid-row:span 1!important;aspect-ratio:4 / 3!important;min-height:0!important;height:auto!important}
+.mosaic[data-reveal]>.tile,.mosaic[data-reveal].is-visible>.tile{opacity:1!important;transform:none!important;animation:none!important}
+.mosaic[data-reveal]{will-change:transform,opacity}
+
+/* Never let a 3D card exceed the grid track. This keeps the two columns apart
+   at every viewport width instead of letting adjacent thumbnails overlap. */
+#work-3d{width:min(1440px,calc(100% - 64px))!important;min-width:0!important;box-sizing:border-box!important}
+#work-3d .mosaic{width:100%!important;min-width:0!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;box-sizing:border-box!important}
+#work-3d .mosaic>.tile{min-width:0!important;max-width:100%!important;box-sizing:border-box!important;transform:none!important}
+@media(max-width:700px){#work-3d{width:calc(100% - 32px)!important}#work-3d .mosaic{gap:12px!important}}
+.studio-services>a{position:relative;display:flex;min-height:226px;overflow:hidden;align-items:center;justify-content:center;flex-direction:column;color:inherit;text-decoration:none;clip-path:inset(0 round 8px);transition:background .35s ease,color .35s ease,transform .35s ease!important}
+.studio-services>a small{position:absolute;top:29px;left:42px}
+.studio-services>a b{font-weight:400!important}
+.studio .studio-copy h2{max-width:900px!important;font-size:clamp(34px,4.35vw,64px)!important;line-height:1.04!important}
+.studio .studio-copy p{max-width:650px!important;margin-top:24px!important;font-size:clamp(15px,1.2vw,18px)!important}
+.studio-services>a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;max-width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#4fa9ff,#286dd3);transition:transform .42s cubic-bezier(.22,.61,.36,1)}
+.studio-services>a:hover,.studio-services>a.is-active{background:linear-gradient(135deg,rgba(67,126,198,.16),rgba(10,16,28,.1));color:#78b7ff;transform:translateY(-3px)!important}
+.studio-services>a:hover::after,.studio-services>a.is-active::after{transform:scaleX(1)}
+.studio-services>strong{display:none!important}
+.work-category{scroll-margin-top:164px}
+.category-placeholder{max-width:var(--max-width,1280px);margin:88px auto 0;padding:64px 48px;border:1px solid rgba(136,165,204,.18);border-radius:20px;background:linear-gradient(125deg,rgba(18,30,49,.58),rgba(8,12,19,.74));box-shadow:inset 0 1px rgba(255,255,255,.04)}
+.category-placeholder span{display:block;color:#72b5ff;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.category-placeholder h2{margin:18px 0 10px;font-size:clamp(27px,3vw,42px);font-weight:400;letter-spacing:-.035em}
+.category-placeholder p{max-width:520px;margin:0;color:#9ba7b6;font-size:16px;line-height:1.6}
+.websites-section{max-width:var(--max-width,1280px);margin:88px auto 0}
+.websites-heading{margin-bottom:22px}
+.websites-heading span{display:block;color:#72b5ff;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.websites-heading h2{margin:16px 0 0;font-size:clamp(27px,3vw,42px);font-weight:400;letter-spacing:-.035em}
+.websites-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.website-card{min-width:0;overflow:hidden;border:1px solid rgba(136,165,204,.2);border-radius:18px;background:#0d1118;box-shadow:inset 0 1px rgba(255,255,255,.035);transition:border-color .3s ease,box-shadow .3s ease}
+.website-card:hover{border-color:rgba(101,173,255,.44);box-shadow:0 18px 40px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.06)}
+.website-browser{position:relative;aspect-ratio:16 / 10;background:#090c12;overflow:hidden;border-bottom:1px solid rgba(136,165,204,.16)}
+.website-browser-bar{position:absolute;z-index:1;top:0;left:0;right:0;height:30px;display:flex;align-items:center;gap:6px;padding:0 12px;background:rgba(11,15,22,.86);border-bottom:1px solid rgba(255,255,255,.07);pointer-events:none;backdrop-filter:blur(8px)}
+.website-browser-bar i{width:6px;height:6px;border-radius:50%;background:rgba(152,166,188,.56)}
+.website-browser-bar i:nth-child(1){background:#68aefe}.website-browser-bar i:nth-child(2){background:#778da8}.website-browser-bar i:nth-child(3){background:#43536a}
+.website-browser-bar span{margin-left:5px;overflow:hidden;color:#a5b2c3;font-size:10px;letter-spacing:.02em;text-overflow:ellipsis;white-space:nowrap}
+.website-browser iframe{position:absolute;top:30px;left:0;width:166.67%;height:calc(166.67% - 30px);border:0;transform:scale(.6);transform-origin:top left;background:#fff}
+.website-meta{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 20px 20px}
+.website-meta small{display:block;color:#71b5ff;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+.website-meta h3{margin:7px 0 5px;color:#f2f5f8;font-size:22px;font-weight:400;letter-spacing:-.03em}
+.website-meta>div>a{color:#95a5b9;font-size:13px;text-decoration:none;transition:color .25s ease}
+.website-meta>div>a:hover{color:#81c0ff}
+.website-open{display:grid;flex:0 0 40px;width:40px;height:40px;place-items:center;border:1px solid rgba(140,171,215,.25);border-radius:50%;color:#e8f1fb;transition:transform .3s ease,background .3s ease,border-color .3s ease}
+.website-open:hover{transform:translateX(4px);border-color:#75baff;background:rgba(82,152,242,.14)}
+.website-open svg{width:19px;height:19px}
+footer{margin-top:36px!important;border:1px solid rgba(136,165,204,.17)!important;border-radius:20px!important;overflow:hidden!important;box-shadow:inset 0 1px rgba(255,255,255,.035)}
+@media(max-width:700px){.mosaic{grid-template-columns:1fr!important;gap:12px!important}.mosaic>.tile,.mosaic>.tile.wide,.mosaic>.tile.tall,.mosaic>.tile.featured{aspect-ratio:4 / 3!important}.studio-services>a{min-height:150px}.studio-services>a small{top:20px;left:22px}.category-placeholder{margin-top:48px;padding:42px 24px;border-radius:16px}.websites-section{margin-top:48px}.websites-grid{grid-template-columns:1fr}.website-card{border-radius:16px}}
+@media(max-width:700px){footer{margin-top:24px!important;border-radius:16px!important}}
+
+/* AI Video: a vertical deliverable needs a vertical card. The supplied square
+   key art is intentionally cropped inside the card without changing its frame. */
+.ai-projects .mosaic{grid-template-columns:repeat(4,minmax(0,1fr))!important;justify-content:start!important}
+.ai-projects .mosaic>.tile.tile-vertical{aspect-ratio:9 / 16!important;width:100%!important}
+.ai-projects .tile-vertical>img{object-position:center!important}
+.ai-placeholder{display:grid;place-items:center;min-width:0;aspect-ratio:9 / 16;border:1px solid rgba(119,157,207,.20);border-radius:8px;background:linear-gradient(145deg,rgba(19,31,49,.72),rgba(9,14,22,.76));box-shadow:inset 0 1px rgba(255,255,255,.035)}
+.ai-placeholder span{color:#7d91aa;font-size:12px;font-weight:400;letter-spacing:.13em;text-transform:uppercase}
+@media(max-width:1050px){.ai-projects .mosaic{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:700px){.ai-projects .mosaic{grid-template-columns:minmax(0,1fr)!important}.ai-projects .mosaic>.tile.tile-vertical,.ai-placeholder{max-width:390px!important;aspect-ratio:9 / 16!important}}
+
+/* One alignment system across the three work areas. It makes the 3D cards a
+   little more compact, gives Websites the same usable width, and keeps clear
+   vertical separation between categories. */
+html,body,main{max-width:100%;overflow-x:clip}
+.portfolio,.websites-section{width:calc(100% - 64px)!important;max-width:1440px!important;margin-left:auto!important;margin-right:auto!important}
+.portfolio{padding-left:0!important;padding-right:0!important}
+.websites-section{margin-top:104px!important}
+.ai-projects{margin-top:104px!important}
+.websites-grid{gap:18px!important}
+
+/* Lumos contact: only the blue inner emblem is visible; the source's gray rim
+   and dark square are cropped inside the round mark. */
+@media(max-width:700px){.portfolio,.websites-section{width:calc(100% - 32px)!important}.websites-section,.ai-projects{margin-top:64px!important}}
+
+/* Footer identity and navigation remain present below the contact card. */
+.footer-details{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;align-items:center;gap:clamp(24px,5vw,74px);margin:42px 0 0!important;padding:0 0 28px;border-bottom:1px solid rgba(151,175,209,.14)}
+.footer-details .wordmark{display:flex;width:auto!important;height:58px!important;max-width:none!important}
+.footer-details .wordmark img{width:260px!important;height:58px!important;object-fit:contain!important;object-position:left center!important}
+.footer-details nav{display:flex;align-items:center;gap:22px}
+.footer-details nav a,.footer-details>span{color:#aab5c4;font-size:13px;font-weight:400;text-decoration:none;transition:color .25s ease}
+.footer-details nav a:hover{color:#74b8ff}
+.footer-details>span{white-space:nowrap;color:#7e8b9d}
+@media(max-width:700px){.footer-details{grid-template-columns:1fr;gap:20px;margin-top:30px!important;padding-bottom:24px}.footer-details .wordmark img{width:230px!important}.footer-details nav{gap:18px}.footer-details>span{font-size:12px}}
+
+/* The supplied Lumos piece remains 9:16 end-to-end: card and player share
+   the same vertical frame rather than adding wide black side fields. */
+.lumos-project-modal .internal-video,.ai-project-modal .internal-video{width:min(100%,560px)!important;aspect-ratio:9 / 16!important;margin:0 auto!important}
+
+/* Contact panel uses the same established surface, only with a wider usable
+   measure. Lumos CTA lives in the footer, not inside the project player. */
+footer>.contact-block{width:1160px!important;max-width:calc(100% - 80px)!important;margin-left:auto!important;margin-right:auto!important;padding:clamp(38px,4vw,60px)!important}
+footer>.contact-block>p{font-size:clamp(38px,3.7vw,60px)!important;line-height:1.12!important}
+footer>.contact-block>a{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;min-width:0!important;font-size:clamp(24px,2.6vw,42px)!important;overflow-wrap:anywhere!important;word-break:break-word!important}
+footer>.contact-block>a svg{justify-self:end!important}
+.footer-partner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;width:1160px;max-width:calc(100% - 80px);margin:36px auto 0}
+.footer-partner-brand{display:flex;align-items:center;justify-content:center;gap:16px}
+.footer-partner-brand>span:first-child{color:#a9b5c5;font-size:20px;font-weight:400}
+.lumos-whatsapp{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;width:100%;min-height:92px;padding:16px 32px;border:1px solid rgba(109,174,255,.50);border-radius:24px;background:rgba(30,56,95,.72);color:#edf5ff;font-size:23px;font-weight:400;line-height:1.2;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.lumos-whatsapp>span{grid-column:2;text-align:center}
+.lumos-whatsapp:hover{transform:translateY(-2px);border-color:rgba(139,199,255,.82);background:rgba(36,76,132,.86)}
+.lumos-whatsapp>svg{grid-column:3;justify-self:end;width:30px;height:30px;color:#81c0ff}
+.lumos-emblem{display:grid;flex:0 0 96px;width:96px;height:96px;overflow:hidden;border-radius:50%;background:#071c72;padding:9px}
+.lumos-emblem img{width:100%;height:100%;object-fit:cover;border-radius:50%;transform:none}
+.footer-details{width:1160px;max-width:calc(100% - 80px);margin-left:auto!important;margin-right:auto!important;border-bottom:0!important}
+.footer-details .wordmark,.footer-details nav a,.footer-bottom.footer-centered{border-bottom:0!important;border-top:0!important;padding-bottom:0!important}
+.footer-details .wordmark{font-size:inherit!important}
+.footer-details nav a{padding:0!important}
+.footer-bottom.footer-centered{margin-left:auto!important;margin-right:auto!important}
+@media(max-width:700px){footer>.contact-block{width:calc(100% - 32px)!important;padding:32px 26px!important}.footer-partner{width:calc(100% - 32px);max-width:none;gap:16px}.footer-partner-brand>span:first-child{font-size:17px}.lumos-emblem{width:76px;height:76px;padding:7px}.lumos-whatsapp{min-height:72px;padding:14px 18px;font-size:16px}.lumos-whatsapp>svg{width:22px;height:22px}.footer-details{width:calc(100% - 32px);max-width:none}}
+
+/* The featured player follows the same shared site width as the work grids. */
+.reel{width:calc(100% - 64px)!important;max-width:1440px!important;padding-left:0!important;padding-right:0!important}
+@media(max-width:700px){.reel{width:calc(100% - 32px)!important}}
+
+/* The About panel follows the exact shared horizontal measure of the work
+   areas, rather than extending wider than the portfolio. */
+.studio{width:calc(100% - 64px)!important;max-width:1440px!important}
+@media(max-width:700px){.studio{width:calc(100% - 32px)!important}}
+
+/* Final footer reset: this keeps every element on one wide shared measure,
+   regardless of older footer rules above. */
+footer#contact{width:min(1440px,calc(100% - 64px))!important;max-width:none!important;margin:92px auto 0!important;padding:clamp(48px,5vw,76px)!important;border-radius:22px!important;background:#101215!important}
+footer#contact>div{margin-bottom:0!important}
+footer#contact>.contact-block{width:100%!important;max-width:none!important;margin:0!important;padding:clamp(38px,4vw,62px)!important;border-radius:18px!important}
+footer#contact>.contact-block>p{max-width:none!important;margin:14px 0 34px!important;font-size:clamp(38px,3.7vw,60px)!important;line-height:1.1!important}
+footer#contact>.contact-block>a{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;width:100%!important;min-width:0!important;gap:28px!important;overflow:visible!important;word-break:normal!important;overflow-wrap:normal!important;white-space:nowrap!important;font-size:clamp(23px,2.55vw,42px)!important;line-height:1.15!important}
+footer#contact>.contact-block>a svg{width:clamp(34px,3vw,48px)!important;height:clamp(34px,3vw,48px)!important;max-width:none!important;max-height:none!important;justify-self:end!important;flex:none!important}
+footer#contact>.footer-partner{display:flex!important;align-items:stretch!important;justify-content:flex-start!important;gap:24px!important;width:100%!important;max-width:none!important;margin:44px 0 0!important}
+footer#contact .footer-partner-brand{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:20px!important;min-height:112px!important}
+footer#contact .footer-partner-brand>span:first-child{margin:0!important;color:#aeb9c9!important;font-size:clamp(20px,1.65vw,27px)!important;line-height:1!important}
+footer#contact .lumos-emblem{display:block!important;flex:0 0 112px!important;width:112px!important;height:112px!important;margin:0!important;padding:0!important;overflow:hidden!important;border:0!important;border-radius:50%!important;background:transparent!important;box-shadow:none!important}
+footer#contact .lumos-emblem img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;border-radius:50%!important;background:#061764!important;transform:none!important}
+footer#contact .lumos-whatsapp{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;flex:1!important;width:auto!important;min-width:0!important;min-height:112px!important;margin:0!important;padding:22px 34px!important;border-radius:26px!important;background:linear-gradient(110deg,#1f3a63,#253f67)!important;color:#f2f7ff!important;font-size:clamp(21px,1.8vw,30px)!important;font-weight:500!important;letter-spacing:-.02em!important;line-height:1.15!important}
+footer#contact .lumos-whatsapp>span{grid-column:2!important;margin:0!important;color:inherit!important;font-size:inherit!important;line-height:inherit!important;text-align:center!important;white-space:nowrap!important}
+footer#contact .lumos-whatsapp>svg{grid-column:3!important;justify-self:end!important;width:clamp(30px,2.4vw,42px)!important;height:clamp(30px,2.4vw,42px)!important;max-width:none!important;max-height:none!important;color:#8cc8ff!important}
+footer#contact>.footer-details{display:grid!important;grid-template-columns:minmax(220px,1fr) auto auto!important;align-items:center!important;gap:clamp(28px,5vw,78px)!important;width:100%!important;max-width:none!important;margin:54px 0 0!important;padding:0!important;border:0!important}
+footer#contact .footer-details .wordmark,footer#contact .footer-details nav a,footer#contact .footer-details>span{margin:0!important;padding:0!important;border:0!important;border-bottom:0!important;background:none!important;box-shadow:none!important}
+footer#contact .footer-details .wordmark img{width:260px!important;height:auto!important}
+footer#contact .footer-details nav{display:flex!important;gap:26px!important}
+footer#contact .footer-details nav a,footer#contact .footer-details>span{font-size:clamp(14px,1.1vw,18px)!important;line-height:1.2!important;white-space:nowrap!important}
+footer#contact>.footer-bottom{width:100%!important;margin:38px 0 0!important;padding:26px 0 0!important;border-top:1px solid rgba(151,175,209,.14)!important;text-align:center!important}
+footer#contact>.footer-bottom small{float:none!important;margin:0!important;font-size:12px!important}
+
+/* Website previews are automatic, but never become an embedded browsing
+   surface. They move only while this part of the portfolio is on screen. */
+.website-browser iframe{pointer-events:none!important;animation:websitePreviewScroll 18s cubic-bezier(.45,0,.55,1) infinite alternate!important;animation-play-state:paused!important;will-change:transform}
+.website-card.is-previewing .website-browser iframe{animation-play-state:running!important}
+@keyframes websitePreviewScroll{0%,12%{transform:translateY(0) scale(.6)}88%,100%{transform:translateY(-36%) scale(.6)}}
+@media(prefers-reduced-motion:reduce){.website-browser iframe{animation:none!important;transform:scale(.6)!important;will-change:auto!important}}
+@media(max-width:700px){footer#contact{width:calc(100% - 32px)!important;margin-top:58px!important;padding:32px 18px!important;border-radius:18px!important}footer#contact>.contact-block{padding:32px 24px!important}footer#contact>.contact-block>p{font-size:clamp(34px,11vw,48px)!important}footer#contact>.contact-block>a{gap:16px!important;white-space:normal!important;font-size:clamp(18px,6vw,28px)!important}footer#contact>.footer-partner{gap:18px!important;margin-top:32px!important}footer#contact .footer-partner-brand{min-height:88px!important;gap:14px!important}footer#contact .lumos-emblem{flex-basis:88px!important;width:88px!important;height:88px!important}footer#contact .lumos-whatsapp{min-height:86px!important;padding:18px 20px!important;font-size:clamp(17px,5vw,22px)!important}footer#contact .lumos-whatsapp>span{white-space:normal!important}footer#contact>.footer-details{grid-template-columns:1fr!important;gap:24px!important;margin-top:42px!important}footer#contact .footer-details nav{gap:20px!important;flex-wrap:wrap!important}footer#contact>.footer-bottom{margin-top:30px!important}}
+
+/* The partner CTA is deliberately quieter and smaller than the contact panel:
+   it uses the same translucent glass language as the header. */
+footer#contact>.footer-partner{align-items:center!important}
+footer#contact .lumos-whatsapp{align-self:center!important;flex:none!important;width:min(780px,100%)!important;min-height:78px!important;padding:16px 28px!important;border-color:rgba(126,181,255,.5)!important;background:linear-gradient(115deg,rgba(29,36,47,.78),rgba(13,18,27,.68) 56%,rgba(22,45,79,.65))!important;backdrop-filter:blur(22px) saturate(150%)!important;-webkit-backdrop-filter:blur(22px) saturate(150%)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(105,158,230,.17),0 10px 28px rgba(0,0,0,.18)!important;font-size:clamp(18px,1.45vw,24px)!important}
+footer#contact .lumos-whatsapp:hover{background:linear-gradient(115deg,rgba(38,49,66,.9),rgba(16,24,37,.82) 56%,rgba(31,62,104,.78))!important}
+@media(max-width:700px){footer#contact .lumos-whatsapp{width:100%!important;min-height:70px!important;font-size:18px!important}}
+
+/* Contact line and original Lumos artwork. */
+footer#contact>.contact-block>a{border:0!important;padding-bottom:0!important;transition:color .3s ease!important}
+footer#contact>.contact-block>a svg{transition:transform .42s cubic-bezier(.22,.61,.36,1),color .3s ease!important}
+footer#contact>.contact-block>a:hover svg{transform:translateX(10px)!important;color:#75baff!important}
+footer#contact .lumos-emblem{background:#061764!important}
+footer#contact .lumos-emblem img{object-fit:cover!important;object-position:center!important;background:#061764!important}
+
+/* Partner mark and CTA: align the lighthouse artwork, add a real WhatsApp
+   mark, and give the directional arrow a small forward motion. */
+footer#contact .lumos-emblem img{object-position:54% center!important}
+footer#contact .lumos-whatsapp{grid-template-columns:auto minmax(0,1fr) auto!important;column-gap:16px!important}
+footer#contact .lumos-whatsapp .whatsapp-icon{grid-column:1!important;justify-self:start!important;width:clamp(23px,1.8vw,29px)!important;height:clamp(23px,1.8vw,29px)!important;color:#7fc6ff!important;fill:currentColor!important}
+footer#contact .lumos-whatsapp>span{grid-column:2!important;justify-self:center!important}
+footer#contact .lumos-whatsapp .lumos-arrow{grid-column:3!important;justify-self:end!important;transition:transform .32s cubic-bezier(.22,.61,.36,1)!important}
+footer#contact .lumos-whatsapp:hover .lumos-arrow{animation:lumos-arrow-forward .75s ease-in-out infinite alternate}
+@keyframes lumos-arrow-forward{to{transform:translateX(8px)}}
+@media(prefers-reduced-motion:reduce){footer#contact .lumos-whatsapp:hover .lumos-arrow{animation:none!important}}
+
+/* Shared blue section labels: more legible without competing with headings. */
+.reel-head span,.studio .studio-copy>span,.websites-heading span,footer#contact>.contact-block>span{font-size:clamp(13px,1.05vw,17px)!important;letter-spacing:.15em!important}
+
+/* Brighter, restrained category state — the navigation wakes up before the
+   first row of work reaches the middle of the viewport. */
+.studio-services>a:hover,.studio-services>a.is-active{color:#f4f8ff!important;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(176,207,244,.04))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 0 34px rgba(244,249,255,.11)!important}
+.studio-services>a:hover::after,.studio-services>a.is-active::after{background:linear-gradient(90deg,#fff,#bcdcff)!important;box-shadow:0 0 12px rgba(255,255,255,.55)!important}
+
+/* A square 3D grid: accents are larger, never full-width. */
+#work-3d .mosaic{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+#work-3d .mosaic>.tile,
+#work-3d .mosaic>.tile.wide,
+#work-3d .mosaic>.tile.tall{aspect-ratio:1 / 1!important}
+#work-3d .mosaic>.tile.featured{grid-column:span 2!important;grid-row:span 2!important;aspect-ratio:1 / 1!important}
+@media(max-width:900px){#work-3d .mosaic{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+
+/* Active category: a calm, contained highlight that stays inside the header. */
+.studio-services>a:hover,.studio-services>a.is-active{
+  color:#d9eaff!important;
+  background:linear-gradient(135deg,rgba(107,159,223,.16),rgba(82,125,184,.06))!important;
+  box-shadow:inset 0 1px 0 rgba(225,241,255,.18),inset 0 0 18px rgba(100,155,220,.055)!important
+}
+.studio-services>a:hover::after,.studio-services>a.is-active::after{
+  background:linear-gradient(90deg,#89c2ff,#dceeff,#89c2ff)!important;
+  box-shadow:0 0 6px rgba(148,198,255,.34)!important
+}
+
+/* Wordmark hover: a light sweep passes over the logo with a restrained zoom. */
+.topbar .wordmark{position:relative!important;overflow:hidden!important;border-radius:5px!important;transition:transform .42s cubic-bezier(.22,.61,.36,1)!important;transform-origin:left center!important}
+.topbar .wordmark::after{content:"";position:absolute;inset:-30% auto -30% -55%;width:34%;pointer-events:none;background:linear-gradient(105deg,transparent,rgba(255,255,255,.08) 32%,rgba(255,255,255,.72) 50%,rgba(255,255,255,.08) 68%,transparent);transform:translateX(-170%) skewX(-18deg)}
+.topbar .wordmark:hover{transform:scale(1.035)!important}
+.topbar .wordmark:hover::after{animation:quasar-wordmark-sweep .75s cubic-bezier(.22,.61,.36,1) both}
+@keyframes quasar-wordmark-sweep{to{transform:translateX(620%) skewX(-18deg)}}
+@media(prefers-reduced-motion:reduce){.topbar .wordmark:hover{transform:none!important}.topbar .wordmark:hover::after{animation:none!important}}
+
+/* Footer wordmark receives the same restrained light sweep as the header. */
+footer#contact .footer-details .wordmark{position:relative!important;overflow:hidden!important;border-radius:5px!important;transition:transform .42s cubic-bezier(.22,.61,.36,1)!important;transform-origin:left center!important}
+footer#contact .footer-details .wordmark::after{content:"";position:absolute;inset:-30% auto -30% -55%;z-index:2;width:34%;pointer-events:none;background:linear-gradient(105deg,transparent,rgba(255,255,255,.08) 32%,rgba(255,255,255,.72) 50%,rgba(255,255,255,.08) 68%,transparent);transform:translateX(-170%) skewX(-18deg)}
+footer#contact .footer-details .wordmark:hover{transform:scale(1.035)!important}
+footer#contact .footer-details .wordmark:hover::after{animation:quasar-wordmark-sweep .75s cubic-bezier(.22,.61,.36,1) both}
+
+@media(prefers-reduced-motion:reduce){footer#contact .footer-details .wordmark:hover{transform:none!important}footer#contact .footer-details .wordmark:hover::after{animation:none!important}}
+
+/* Studio roster: intentionally compact, so it supports the statement instead
+   of competing with the work-navigation below it. */
+.studio .studio-team{max-width:900px;margin:clamp(34px,4vw,54px) 0 0;padding-top:20px;border-top:1px solid rgba(151,175,209,.18)}
+.studio .studio-team>span{display:block!important;margin:0 0 14px!important;color:#72b5ff!important;font-size:11px!important;font-weight:700!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+.studio .studio-team ul{display:grid;margin:0;padding:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;list-style:none}
+.studio .studio-team li{display:grid;gap:5px;min-width:0}
+.studio .studio-team strong{color:#edf2f8;font-size:clamp(16px,1.35vw,20px);font-weight:500;letter-spacing:-.02em}
+.studio .studio-team small{color:#9daaba;font-size:13px;line-height:1.4}
+@media(max-width:700px){.studio .studio-team ul{grid-template-columns:1fr;gap:14px}.studio .studio-team{margin-top:34px}}
+
+/* Brand hover: restrained scale and light sweep, with a brief blue aura over the icon. */
+.topbar .wordmark::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:0!important;
+  left:-8%!important;
+  top:-32%!important;
+  width:38%!important;
+  height:164%!important;
+  pointer-events:none!important;
+  border-radius:50%!important;
+  background:radial-gradient(ellipse,rgba(38,116,255,.42) 0%,rgba(34,98,230,.15) 39%,transparent 72%)!important;
+  opacity:0!important;
+  transform:scale(.7)!important;
+  transition:opacity .28s ease,transform .42s cubic-bezier(.22,.61,.36,1)!important;
+}
+.topbar .wordmark img{position:relative!important;z-index:1!important}
+.topbar .wordmark:hover::before{opacity:1!important;transform:scale(1)!important}
+@media(prefers-reduced-motion:reduce){.topbar .wordmark:hover::before{opacity:0!important;transform:none!important}}
+
+/* Final brand-hover authority: animate the image itself so the response cannot be
+   lost behind the transparent PNG or an inherited pseudo-element rule. */
+.topbar .wordmark{
+  isolation:isolate!important;
+  cursor:pointer!important;
+}
+.topbar .wordmark img{
+  transform:scale(1)!important;
+  transform-origin:left center!important;
+  transition:transform .42s cubic-bezier(.22,.61,.36,1),filter .42s ease!important;
+  will-change:transform,filter;
+}
+.topbar .wordmark::after{
+  display:block!important;
+  z-index:4!important;
+  opacity:0!important;
+  mix-blend-mode:screen!important;
+}
+.topbar .wordmark:hover img{
+  transform:scale(1.03)!important;
+  filter:brightness(1.12) drop-shadow(0 0 9px rgba(60,137,255,.62))!important;
+}
+.topbar .wordmark:hover::after{opacity:1!important}
+@media(prefers-reduced-motion:reduce){
+  .topbar .wordmark img,.topbar .wordmark:hover img{transform:none!important;filter:none!important}
+  .topbar .wordmark:hover::after{animation:none!important;opacity:0!important}
+}
+
+/* Footer logo uses the same visible interaction as the header. */
+footer#contact .footer-details .wordmark{
+  isolation:isolate!important;
+  cursor:pointer!important;
+}
+footer#contact .footer-details .wordmark img{
+  position:relative!important;
+  z-index:1!important;
+  transform:scale(1)!important;
+  transform-origin:left center!important;
+  transition:transform .42s cubic-bezier(.22,.61,.36,1),filter .42s ease!important;
+  will-change:transform,filter;
+}
+footer#contact .footer-details .wordmark::after{
+  display:block!important;
+  z-index:4!important;
+  opacity:0!important;
+  mix-blend-mode:screen!important;
+}
+footer#contact .footer-details .wordmark::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:0!important;
+  left:-8%!important;
+  top:-32%!important;
+  width:38%!important;
+  height:164%!important;
+  pointer-events:none!important;
+  border-radius:50%!important;
+  background:radial-gradient(ellipse,rgba(38,116,255,.42) 0%,rgba(34,98,230,.15) 39%,transparent 72%)!important;
+  opacity:0!important;
+  transform:scale(.7)!important;
+  transition:opacity .28s ease,transform .42s cubic-bezier(.22,.61,.36,1)!important;
+}
+footer#contact .footer-details .wordmark:hover img{
+  transform:scale(1.03)!important;
+  filter:brightness(1.12) drop-shadow(0 0 9px rgba(60,137,255,.62))!important;
+}
+footer#contact .footer-details .wordmark:hover::before{opacity:1!important;transform:scale(1)!important}
+footer#contact .footer-details .wordmark:hover::after{opacity:1!important}
+@media(prefers-reduced-motion:reduce){
+  footer#contact .footer-details .wordmark img,footer#contact .footer-details .wordmark:hover img{transform:none!important;filter:none!important}
+  footer#contact .footer-details .wordmark:hover::before,footer#contact .footer-details .wordmark:hover::after{opacity:0!important;animation:none!important}
+}
+
+/* Real logo layers: deliberately not pseudo-elements, so legacy styles cannot
+   suppress the sweep or the blue icon aura. */
+.wordmark>.brand-aura,.wordmark>.brand-sweep{display:block!important;position:absolute!important;pointer-events:none!important}
+.wordmark>.brand-aura{
+  z-index:0!important;left:-8%!important;top:-28%!important;width:39%!important;height:156%!important;
+  border-radius:50%!important;background:radial-gradient(ellipse,rgba(41,126,255,.7) 0%,rgba(31,98,238,.27) 42%,transparent 72%)!important;
+  opacity:0!important;transform:scale(.62)!important;transition:opacity .28s ease,transform .45s cubic-bezier(.22,.61,.36,1)!important;
+}
+.wordmark>.brand-sweep{
+  z-index:5!important;inset:-30% auto -30% -46%!important;width:30%!important;
+  background:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.05) 31%,rgba(255,255,255,.95) 50%,rgba(255,255,255,.08) 69%,transparent 90%)!important;
+  opacity:0!important;transform:translateX(-140%) skewX(-18deg)!important;
+}
+.wordmark>img{position:relative!important;z-index:1!important}
+.wordmark:hover>.brand-aura{opacity:1!important;transform:scale(1)!important}
+.wordmark:hover>.brand-sweep{opacity:1!important;animation:brand-layer-sweep .82s cubic-bezier(.22,.61,.36,1) both!important}
+@keyframes brand-layer-sweep{0%{transform:translateX(-140%) skewX(-18deg)}100%{transform:translateX(650%) skewX(-18deg)}}
+@media(prefers-reduced-motion:reduce){.wordmark>.brand-aura,.wordmark>.brand-sweep{display:none!important}}
+
+/* Footer: keep the highlight cycling while hovered, rather than a one-off flash. */
+footer#contact .footer-details .wordmark>.brand-sweep{
+  width:42%!important;
+  background:linear-gradient(105deg,transparent 8%,rgba(126,190,255,.18) 32%,rgba(255,255,255,.98) 50%,rgba(126,190,255,.18) 68%,transparent 92%)!important;
+  filter:drop-shadow(0 0 7px rgba(121,190,255,.6))!important;
+}
+footer#contact .footer-details .wordmark:hover>.brand-sweep{
+  animation:brand-layer-sweep 1.35s cubic-bezier(.22,.61,.36,1) infinite!important;
+  opacity:1!important;
+}
+
+/* The footer mark is white, so a white glare was invisible. This is a clipped
+   blue-lit copy of the actual wordmark, making the sweep legible. */
+footer#contact .footer-details .wordmark>.brand-sweep{left:0!important;top:0!important;bottom:auto!important;width:260px!important;height:58px!important;background:none!important;filter:none!important;transform:none!important;clip-path:inset(0 100% 0 0)!important}
+footer#contact .footer-details .wordmark>.brand-sweep img{display:block!important;width:260px!important;height:58px!important;object-fit:contain!important;object-position:left center!important;filter:brightness(1.35) sepia(1) saturate(4) hue-rotate(170deg) drop-shadow(0 0 8px rgba(83,169,255,.95))!important}
+footer#contact .footer-details .wordmark:hover>.brand-sweep{animation:footer-logo-blue-sweep 1.45s ease-in-out infinite!important}
+@keyframes footer-logo-blue-sweep{0%,100%{clip-path:inset(0 100% 0 0)}50%{clip-path:inset(0 0 0 0)}}
+
+/* Explicit visible fallback: the footer mark itself emits light while hovered. */
+footer#contact .footer-details .wordmark:hover>img{
+  animation:footer-logo-visible-glow .9s ease-in-out infinite alternate!important;
+}
+@keyframes footer-logo-visible-glow{
+  from{filter:brightness(1.15) drop-shadow(0 0 4px rgba(79,163,255,.55))}
+  to{filter:brightness(1.5) drop-shadow(0 0 18px rgba(79,163,255,1))}
+}
+
+/* A real coloured copy of the footer logo is revealed by a moving mask.
+   The blue streak remains visible against the white original artwork. */
+footer#contact .footer-details .footer-wordmark{
+  position:relative!important;
+  display:block!important;
+  width:260px!important;
+  height:58px!important;
+  overflow:visible!important;
+  isolation:isolate!important;
+  transform-origin:left center!important;
+}
+footer#contact .footer-details .footer-wordmark>img:first-child{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:260px!important;
+  height:58px!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  z-index:1!important;
+  transition:transform .35s cubic-bezier(.22,.61,.36,1),filter .35s ease!important;
+}
+footer#contact .footer-details .footer-wordmark .footer-logo-shine{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:260px!important;
+  height:58px!important;
+  z-index:3!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  filter:brightness(1.4) sepia(1) saturate(7) hue-rotate(170deg) drop-shadow(0 0 10px rgba(92,181,255,.98))!important;
+  -webkit-mask-image:linear-gradient(105deg,transparent 36%,#000 45%,#000 55%,transparent 64%)!important;
+  -webkit-mask-size:220% 100%!important;
+  -webkit-mask-position:200% 0!important;
+  mask-image:linear-gradient(105deg,transparent 36%,#000 45%,#000 55%,transparent 64%)!important;
+  mask-size:220% 100%!important;
+  mask-position:200% 0!important;
+}
+footer#contact .footer-details .footer-wordmark:hover>img:first-child{
+  transform:scale(1.025)!important;
+  filter:brightness(1.13) drop-shadow(0 0 8px rgba(86,173,255,.65))!important;
+  animation:none!important;
+}
+footer#contact .footer-details .footer-wordmark:hover .footer-logo-shine{
+  opacity:1!important;
+  animation:footer-logo-blue-scan 1.15s linear infinite!important;
+}
+@keyframes footer-logo-blue-scan{
+  from{-webkit-mask-position:200% 0;mask-position:200% 0}
+  to{-webkit-mask-position:-100% 0;mask-position:-100% 0}
+}
+@media(prefers-reduced-motion:reduce){
+  footer#contact .footer-details .footer-wordmark:hover .footer-logo-shine{animation:none!important;opacity:.55!important;-webkit-mask-position:50% 0!important;mask-position:50% 0!important}
+}
+
+/* Footer logo: a single artwork plus a light band. No duplicate logo layer,
+   so the hover cannot leave a ghost copy of the wordmark. */
+footer#contact .footer-details .footer-wordmark{
+  overflow:visible!important;
+}
+footer#contact{overflow:visible!important}
+footer#contact .lumos-emblem{background:#061764!important;overflow:hidden!important}
+footer#contact .lumos-emblem img{object-position:57% center!important;background:#061764!important}
+footer#contact .footer-details .footer-wordmark::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:4!important;
+  top:-30%!important;
+  bottom:-30%!important;
+  left:0!important;
+  width:84px!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  background:linear-gradient(105deg,transparent 0%,rgba(83,170,255,.08) 21%,rgba(213,240,255,1) 50%,rgba(83,170,255,.18) 79%,transparent 100%)!important;
+  filter:blur(.6px) drop-shadow(0 0 12px rgba(75,164,255,1))!important;
+  transform:translateX(-90px) skewX(-18deg)!important;
+}
+footer#contact .footer-details .footer-wordmark:hover::after{
+  opacity:1!important;
+  animation:footer-logo-light-band 1.05s cubic-bezier(.22,.61,.36,1) infinite!important;
+}
+@keyframes footer-logo-light-band{
+  from{transform:translateX(-90px) skewX(-18deg)}
+  to{transform:translateX(340px) skewX(-18deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  footer#contact .footer-details .footer-wordmark:hover::after{animation:none!important;opacity:0!important}
+}
+
+/* One floating header only.  The page background begins at the viewport edge;
+   no full-width dark header layer sits behind the glass navigation. */
+body{padding-top:0!important}
+/* The header occupies the first visual block too: keep the page field behind
+   it continuous instead of exposing a separate black body strip. */
+main{
+  min-height:100vh!important;
+  background:
+    radial-gradient(70vw 62vw at 96% 35%,rgba(21,73,158,.34) 0%,rgba(13,43,99,.20) 32%,rgba(8,19,38,.08) 52%,transparent 72%),
+    radial-gradient(44vw 36vw at 66% -8%,rgba(45,112,210,.13),transparent 70%),
+    linear-gradient(180deg,#0a0e14 0%,#0a0e14 44%,#0b1017 100%)!important;
+}
+header.topbar{
+  position:sticky!important;
+  top:18px!important;
+  left:auto!important;
+  right:auto!important;
+  z-index:20!important;
+  width:calc(100% - 64px)!important;
+  max-width:1560px!important;
+  height:132px!important;
+  margin:18px auto 0!important;
+  background:linear-gradient(115deg,rgba(27,34,46,.94),rgba(12,17,26,.92) 56%,rgba(20,43,77,.9))!important;
+}
+header.topbar::before,header.topbar::after{z-index:0!important}
+header.topbar .topbar-inner{position:relative!important;z-index:1!important}
+
+/* 3D portfolio: a compact editorial grid with two deliberate hero cards. */
+#work-3d .mosaic{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  grid-auto-rows:clamp(180px,14.5vw,276px)!important;
+  grid-auto-flow:dense!important;
+  gap:16px!important;
+}
+#work-3d .mosaic>.tile{
+  grid-column:span 1!important;
+  grid-row:span 1!important;
+  aspect-ratio:auto!important;
+  height:auto!important;
+}
+#work-3d .mosaic>.tile-goodpack{
+  grid-column:span 1!important;
+  grid-row:span 1!important;
+}
+#work-3d .mosaic>.tile-goodpack .tile-info strong{font-size:clamp(18px,1.35vw,24px)!important}
+@media(max-width:1000px){
+  header.topbar{width:calc(100% - 32px)!important;height:96px!important}
+  #work-3d .mosaic{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:clamp(180px,35vw,300px)!important}
+}
+@media(max-width:700px){
+  header.topbar{width:calc(100% - 20px)!important;height:74px!important;margin-top:10px!important}
+  #work-3d .mosaic{grid-template-columns:1fr!important;grid-auto-rows:72vw!important;gap:12px!important}
+  #work-3d .mosaic>.tile,#work-3d .mosaic>.tile-goodpack,#work-3d .mosaic>.tile-acustic-mask,#work-3d .mosaic>.tile-robotic-arm{grid-column:1!important;grid-row:auto!important}
+}
+
+/* Category headers need their own internal spacing.  Do not let the title or
+   project count inherit the narrow card/grid dimensions. */
+.portfolio-bar{
+  min-height:76px!important;
+  padding:16px 36px!important;
+  overflow:visible!important;
+}
+.portfolio-bar>div:first-child{
+  display:flex!important;
+  align-items:baseline!important;
+  flex-wrap:wrap!important;
+  gap:10px 16px!important;
+  min-width:0!important;
+}
+.portfolio-bar strong{
+  font-size:clamp(20px,1.55vw,28px)!important;
+  line-height:1.15!important;
+  white-space:normal!important;
+}
+.portfolio-bar span{
+  font-size:clamp(14px,1vw,17px)!important;
+  white-space:normal!important;
+}
+.websites-heading h2{
+  max-width:760px!important;
+  font-size:clamp(26px,2.25vw,38px)!important;
+  line-height:1.14!important;
+}
+.websites-bar{margin-bottom:22px!important}
+@media(max-width:700px){
+  .portfolio-bar{min-height:64px!important;padding:14px 18px!important}
+  .portfolio-bar strong{font-size:20px!important}
+  .portfolio-bar span{font-size:14px!important}
+  .websites-heading h2{font-size:27px!important}
+}
+
+/* Review cleanup: old "medium" scaling was the direct cause of the cards
+   colliding. All 3D tracks now own their dimensions; tiles never resize. */
+#work-3d .mosaic>.tile,
+#work-3d .mosaic>.tile.medium,
+#work-3d .mosaic>.tile.wide,
+#work-3d .mosaic>.tile.tall,
+#work-3d .mosaic>.tile.featured{
+  grid-column:span 1!important;
+  grid-row:span 1!important;
+  transform:none!important;
+  scale:1!important;
+  aspect-ratio:1 / 1!important;
+}
+#work-3d .mosaic>.tile:hover{transform:none!important}
+/* The featured reel follows the same horizontal measure as the header. */
+.reel{
+  width:min(1560px,calc(100% - 64px))!important;
+  max-width:none!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+@media(max-width:700px){
+  .reel{width:calc(100% - 32px)!important}
+  #work-3d .mosaic>.tile,#work-3d .mosaic>.tile.medium,#work-3d .mosaic>.tile.wide,#work-3d .mosaic>.tile.tall,#work-3d .mosaic>.tile.featured{aspect-ratio:4 / 3!important}
+}
+
+/* Restored editorial mosaic: the featured cards occupy actual grid tracks. */
+@media(min-width:901px){
+  #work-3d .mosaic{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    grid-auto-rows:clamp(210px,20vw,340px)!important;
+    grid-auto-flow:dense!important;
+    gap:14px!important;
+    row-gap:14px!important;
+    column-gap:14px!important;
+    align-items:stretch!important;
+  }
+  #work-3d .mosaic>.tile,
+  #work-3d .mosaic>.tile.standard,
+  #work-3d .mosaic>.tile.medium,
+  #work-3d .mosaic>.tile-video-thumb{
+    grid-column:span 1!important;
+    grid-row:span 1!important;
+    aspect-ratio:1.08 / 1!important;
+    height:auto!important;
+  }
+  #work-3d .mosaic>.tile.featured{
+    grid-column:span 2!important;
+    grid-row:span 2!important;
+    aspect-ratio:auto!important;
+  }
+  #work-3d .mosaic>.tile-goodpack{
+    grid-column:span 1!important;
+    grid-row:span 1!important;
+  }
+}
+.reel{width:min(1440px,calc(100% - 64px))!important}
+footer#contact{margin-bottom:28px!important}
+
+/*
+ * One continuous page field.
+ *
+ * The legacy section glows were painted inside isolated pseudo-elements.
+ * Their hard bounds became visible around the hero/reel whenever the page
+ * gradient was stronger.  Keep the ambient gradient on body only and use one
+ * shared content measure so the hero, reel and portfolio sit on the same axis.
+ */
+main{background:transparent!important}
+
+.intro,
+.reel,
+.portfolio{
+  width:min(1560px,calc(100% - 64px))!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:32px!important;
+  padding-right:32px!important;
+  background:transparent!important;
+}
+
+.intro::before,
+.intro::after,
+.reel::before,
+.portfolio::before{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+}
+
+@media(max-width:700px){
+  .intro,
+  .reel,
+  .portfolio{
+    width:calc(100% - 32px)!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+}
+
+/* Compact hero: keep the editorial statement, but do not let it dominate the
+   first screen or push the reel below the fold. */
+.intro{
+  min-height:540px!important;
+  padding-top:84px!important;
+  padding-bottom:70px!important;
+  grid-template-columns:minmax(0,1.42fr) minmax(320px,.58fr)!important;
+  gap:clamp(52px,7vw,118px)!important;
+}
+.intro>div>span{margin-bottom:32px!important;font-size:13px!important}
+.intro h1{
+  max-width:940px!important;
+  font-size:clamp(58px,5vw,94px)!important;
+  font-weight:600!important;
+  line-height:1.02!important;
+}
+.intro>p{
+  max-width:430px!important;
+  margin-bottom:22px!important;
+  font-size:clamp(17px,1.18vw,21px)!important;
+}
+
+/* Editorial 3D mosaic: three deliberate scales, with dense packing and no
+   transforms. Featured cards are 2x2, medium cards are 2x1, and the remaining
+   projects are compact 1x1 cards. */
+@media(min-width:1001px){
+  #work-3d .mosaic{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    grid-auto-rows:clamp(180px,14.5vw,276px)!important;
+    grid-auto-flow:dense!important;
+    gap:14px!important;
+  }
+  #work-3d .mosaic>.tile,
+  #work-3d .mosaic>.tile.standard,
+  #work-3d .mosaic>.tile-video-thumb{
+    grid-column:span 1!important;
+    grid-row:span 1!important;
+    aspect-ratio:auto!important;
+    height:auto!important;
+  }
+  #work-3d .mosaic>.tile.featured{
+    grid-column:span 2!important;
+    grid-row:span 2!important;
+    aspect-ratio:auto!important;
+  }
+  #work-3d .mosaic>.tile.medium,
+  #work-3d .mosaic>.tile-robotic-arm{
+    grid-column:span 2!important;
+    grid-row:span 1!important;
+    aspect-ratio:auto!important;
+  }
+}
+
+@media(max-width:1000px){
+  .intro{
+    min-height:auto!important;
+    padding-top:68px!important;
+    padding-bottom:58px!important;
+    grid-template-columns:1fr!important;
+    gap:34px!important;
+  }
+  .intro h1{font-size:clamp(52px,9vw,78px)!important}
+  .intro>p{margin:0!important}
+}
+
+@media(max-width:620px){
+  .intro{padding-top:56px!important;padding-bottom:48px!important}
+  .intro>div>span{margin-bottom:24px!important;font-size:11px!important}
+  .intro h1{font-size:clamp(42px,12vw,58px)!important}
+}
+
+/* Final frame: one shared horizontal ruler from the navigation to the footer.
+   The page field lives on html, so the area above the floating header cannot
+   fall back to a separate dark strip. */
+:root{--site-ruler:1560px;--site-edge:32px;--site-inner:44px}
+html{
+  min-height:100%;
+  background:
+    radial-gradient(70vw 62vw at 96% 35%,rgba(21,73,158,.34) 0%,rgba(13,43,99,.20) 32%,rgba(8,19,38,.08) 52%,transparent 72%),
+    radial-gradient(44vw 36vw at 66% -8%,rgba(45,112,210,.13),transparent 70%),
+    linear-gradient(180deg,#0a0e14 0%,#0a0e14 44%,#0b1017 100%) fixed!important;
+}
+body,main{min-height:100vh!important;background:transparent!important}
+body{overflow-x:clip!important}
+
+header.topbar,
+.intro,
+.reel,
+.portfolio,
+.studio,
+footer#contact{
+  width:min(var(--site-ruler),calc(100% - (var(--site-edge) * 2)))!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+header.topbar .topbar-inner{max-width:none!important;padding-left:var(--site-inner)!important;padding-right:var(--site-inner)!important}
+
+/* Header wordmark: same light band used by the footer wordmark. */
+header.topbar .wordmark{position:relative!important;overflow:visible!important;isolation:isolate!important}
+header.topbar .wordmark>.brand-sweep{display:none!important}
+header.topbar .wordmark::after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:4!important;
+  top:-30%!important;
+  bottom:-30%!important;
+  left:0!important;
+  width:46px!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  background:linear-gradient(105deg,transparent 0%,rgba(83,170,255,.05) 20%,rgba(204,235,255,.98) 50%,rgba(83,170,255,.12) 78%,transparent 100%)!important;
+  filter:blur(1px) drop-shadow(0 0 9px rgba(75,164,255,.95))!important;
+  transform:translateX(-90px) skewX(-18deg)!important;
+}
+header.topbar .wordmark:hover::after{
+  opacity:1!important;
+  animation:header-logo-light-band 1.05s cubic-bezier(.22,.61,.36,1) infinite!important;
+}
+@keyframes header-logo-light-band{
+  from{transform:translateX(-90px) skewX(-18deg)}
+  to{transform:translateX(500px) skewX(-18deg)}
+}
+@media(max-width:700px){
+  :root{--site-edge:16px;--site-inner:18px}
+  header.topbar,
+  .intro,
+  .reel,
+  .portfolio,
+  .studio,
+  footer#contact{width:calc(100% - (var(--site-edge) * 2))!important}
+}
+@media(prefers-reduced-motion:reduce){
+  header.topbar .wordmark:hover::after{animation:none!important;opacity:0!important}
+}
+
+/* Explicit header light band. This element is intentionally real markup (not
+   a pseudo-element) so legacy header selectors cannot suppress the effect. */
+header.topbar .wordmark::after{display:none!important}
+header.topbar .wordmark>.header-logo-shine{
+  position:absolute!important;
+  z-index:10!important;
+  top:-30%!important;
+  bottom:-30%!important;
+  left:0!important;
+  display:block!important;
+  width:46px!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  background:linear-gradient(105deg,transparent 0%,rgba(83,170,255,.05) 20%,rgba(204,235,255,.98) 50%,rgba(83,170,255,.12) 78%,transparent 100%)!important;
+  filter:blur(1px) drop-shadow(0 0 9px rgba(75,164,255,.95))!important;
+  transform:translateX(-90px) skewX(-18deg)!important;
+}
+header.topbar .wordmark:hover>.header-logo-shine{
+  opacity:1!important;
+  animation:header-logo-light-band-real 1.05s cubic-bezier(.22,.61,.36,1) infinite!important;
+}
+@keyframes header-logo-light-band-real{
+  from{transform:translateX(-90px) skewX(-18deg)}
+  to{transform:translateX(500px) skewX(-18deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  header.topbar .wordmark:hover>.header-logo-shine{animation:none!important;opacity:0!important}
+}
+
+/* One measured page frame. Sections no longer introduce their own horizontal
+   offset: the outside of each block is on the same rule as the header. */
+:root{--page-frame:1560px;--page-gutter:32px}
+header.topbar,
+.intro,
+.reel,
+.studio,
+.portfolio,
+.websites-section,
+footer#contact{
+  box-sizing:border-box!important;
+  width:min(var(--page-frame),calc(100vw - (var(--page-gutter) * 2)))!important;
+  max-width:var(--page-frame)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.intro,
+.reel,
+.portfolio,
+.websites-section{padding-left:0!important;padding-right:0!important}
+.ai-projects{margin-left:auto!important;margin-right:auto!important}
+@media(max-width:700px){
+  :root{--page-gutter:16px}
+}
+
+/* Header: the exact footer light band, clipped by the logo itself. Keeping
+   the animation in a real child prevents older header rules from hiding it. */
+header.topbar .wordmark{position:relative!important;overflow:hidden!important;isolation:isolate!important}
+header.topbar .wordmark>img{position:relative!important;z-index:1!important}
+header.topbar .wordmark>.brand-sweep,
+header.topbar .wordmark>.header-logo-shine,
+header.topbar .wordmark::after{display:none!important}
+header.topbar .wordmark>.header-logo-sweep{
+  position:absolute!important;
+  z-index:2!important;
+  inset:0!important;
+  display:block!important;
+  overflow:hidden!important;
+  pointer-events:none!important;
+}
+header.topbar .wordmark>.header-logo-sweep::after{
+  content:""!important;
+  position:absolute!important;
+  top:-30%!important;
+  bottom:-30%!important;
+  left:0!important;
+  width:46px!important;
+  opacity:1!important;
+  background:linear-gradient(105deg,transparent 0%,rgba(83,170,255,.05) 20%,rgba(204,235,255,.98) 50%,rgba(83,170,255,.12) 78%,transparent 100%)!important;
+  filter:blur(1px) drop-shadow(0 0 9px rgba(75,164,255,.95))!important;
+  transform:translateX(-90px) skewX(-18deg)!important;
+}
+header.topbar .wordmark>.header-logo-sweep>img{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  filter:brightness(1.35) sepia(1) saturate(4) hue-rotate(170deg) drop-shadow(0 0 8px rgba(83,169,255,.95))!important;
+  clip-path:inset(0 100% 0 0)!important;
+}
+header.topbar .wordmark:hover>.header-logo-sweep::after{
+  animation:footer-logo-light-band 1.05s cubic-bezier(.22,.61,.36,1) infinite!important;
+}
+header.topbar .wordmark:hover>.header-logo-sweep>img{
+  animation:footer-logo-blue-sweep 1.45s ease-in-out infinite!important;
+}
+/* This is the animation the footer logo visibly uses. Apply it to the header's
+   primary artwork as well, rather than relying only on an overlay. */
+header.topbar .wordmark:hover>img{
+  animation:none!important;
+}
+header.topbar .wordmark:hover{
+  animation:header-logo-visible-glow .9s ease-in-out infinite alternate!important;
+}
+@keyframes header-logo-visible-glow{
+  from{filter:brightness(1.15) drop-shadow(0 0 4px rgba(79,163,255,.55))}
+  to{filter:brightness(1.5) drop-shadow(0 0 18px rgba(79,163,255,1))}
+}
+@media(prefers-reduced-motion:reduce){
+  header.topbar .wordmark:hover>.header-logo-sweep::after{animation:none!important;transform:translateX(-90px) skewX(-18deg)!important}
+  header.topbar .wordmark:hover>img{animation:none!important}
+  header.topbar .wordmark:hover{animation:none!important}
+}
+
+/* This beam is driven by the Web Animations API on hover. It deliberately has
+   no legacy selector or animated CSS property, so the page's old !important
+   rules cannot cancel it. */
+header.topbar .wordmark>.header-logo-native-sweep{
+  position:absolute!important;
+  z-index:30!important;
+  top:-30%!important;
+  bottom:-30%!important;
+  left:0!important;
+  display:block!important;
+  width:46px!important;
+  pointer-events:none!important;
+  opacity:0;
+  background:linear-gradient(105deg,transparent 0%,rgba(83,170,255,.05) 20%,rgba(204,235,255,.98) 50%,rgba(83,170,255,.12) 78%,transparent 100%)!important;
+  filter:blur(1px) drop-shadow(0 0 9px rgba(75,164,255,.95))!important;
+}
+@media(prefers-reduced-motion:reduce){
+  header.topbar .wordmark>.header-logo-native-sweep{display:none!important}
+}
+
+/* Section title cards use the same glass edge treatment as the header. */
+.reel-head,
+.portfolio-bar{
+  border:1px solid rgba(161,191,230,.48)!important;
+  border-radius:18px!important;
+  background:linear-gradient(115deg,rgba(29,36,47,.62),rgba(13,18,27,.58) 56%,rgba(22,45,79,.46))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(105,158,230,.20)!important;
+}
+@media(max-width:700px){
+  .reel-head,
+  .portfolio-bar{border-radius:14px!important}
+}
+
+/* The 3D section has an older ID selector, so it must be reset explicitly to
+   the same frame as every other section. */
+#work-3d{
+  box-sizing:border-box!important;
+  width:min(var(--page-frame),calc(100vw - (var(--page-gutter) * 2)))!important;
+  max-width:var(--page-frame)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Lumos CTA: animated hairline travels around the complete perimeter. */
+footer#contact .lumos-whatsapp{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  border:1px solid rgba(125,190,255,.42)!important;
+}
+footer#contact .lumos-whatsapp::before{
+  content:""!important;
+  position:absolute!important;
+  z-index:0!important;
+  inset:-1px!important;
+  padding:1px!important;
+  border-radius:inherit!important;
+  pointer-events:none!important;
+  background:conic-gradient(from 0deg,rgba(80,157,255,.05),rgba(136,210,255,.82),rgba(255,255,255,.42),rgba(94,168,255,.1),rgba(80,157,255,.05))!important;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;
+  -webkit-mask-composite:xor!important;
+  mask-composite:exclude!important;
+  filter:drop-shadow(0 0 5px rgba(95,177,255,.6))!important;
+  animation:lumos-border-flow 3.8s linear infinite!important;
+}
+footer#contact .lumos-whatsapp>*{position:relative!important;z-index:1!important}
+@keyframes lumos-border-flow{to{transform:rotate(1turn)}}
+footer#contact .lumos-whatsapp .lumos-arrow{
+  width:30px!important;
+  height:30px!important;
+  color:#91ccff!important;
+  animation:lumos-arrow-idle 1.3s ease-in-out infinite!important;
+}
+footer#contact .lumos-whatsapp:hover .lumos-arrow{animation:lumos-arrow-forward .56s ease-in-out infinite alternate!important}
+@keyframes lumos-arrow-idle{0%,100%{transform:translateX(0);opacity:.72}50%{transform:translateX(4px);opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  footer#contact .lumos-whatsapp::before,
+  footer#contact .lumos-whatsapp .lumos-arrow,
+  footer#contact .lumos-whatsapp:hover .lumos-arrow{animation:none!important}
+}
+
+/* Native hover layers for the Lumos CTA. Their animation is started from the
+   component, so none of the old keyframes can suppress the visible response. */
+footer#contact .lumos-whatsapp>.lumos-native-border{
+  position:absolute!important;
+  z-index:3!important;
+  inset:0!important;
+  display:block!important;
+  grid-column:1 / -1!important;
+  grid-row:1!important;
+  justify-self:stretch!important;
+  align-self:stretch!important;
+  margin:0!important;
+  border-radius:inherit!important;
+  pointer-events:none!important;
+  opacity:0;
+}
+footer#contact .lumos-whatsapp>.lumos-native-arrow{
+  position:relative!important;
+  z-index:4!important;
+  display:grid!important;
+  grid-column:3!important;
+  grid-row:1!important;
+  justify-self:end!important;
+  align-self:center!important;
+  width:clamp(30px,2.4vw,42px)!important;
+  height:clamp(30px,2.4vw,42px)!important;
+  margin:0!important;
+  color:#91ccff!important;
+}
+footer#contact .lumos-whatsapp>.lumos-native-arrow>.lumos-arrow{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  color:inherit!important;
+  animation:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+  footer#contact .lumos-whatsapp>.lumos-native-border{display:none!important}
+}
+
+/* Final hover authority: clean, straight and entirely CSS-driven. */
+footer#contact .lumos-whatsapp::before{display:none!important;animation:none!important}
+footer#contact .lumos-whatsapp .lumos-arrow,
+footer#contact .lumos-whatsapp:hover .lumos-arrow{animation:none!important}
+footer#contact .lumos-whatsapp>.lumos-native-border{
+  opacity:0!important;
+  box-shadow:inset 0 0 0 1px rgba(139,199,255,.28),0 0 0 rgba(81,161,255,0)!important;
+  transition:opacity .24s ease,box-shadow .32s ease!important;
+}
+footer#contact .lumos-whatsapp:hover>.lumos-native-border{
+  opacity:1!important;
+  box-shadow:inset 0 0 0 2px rgba(197,230,255,.92),0 0 18px rgba(73,156,255,.48)!important;
+}
+footer#contact .lumos-whatsapp>.lumos-native-arrow{
+  transform:translateX(0)!important;
+  filter:drop-shadow(0 0 0 rgba(145,204,255,0))!important;
+  transition:transform .36s cubic-bezier(.22,.61,.36,1),filter .36s ease!important;
+}
+footer#contact .lumos-whatsapp:hover>.lumos-native-arrow{
+  transform:translateX(10px)!important;
+  filter:drop-shadow(0 0 8px rgba(145,204,255,.95))!important;
+}
+header.topbar .wordmark>.header-logo-native-sweep{
+  width:84px!important;
+  opacity:0!important;
+  background:linear-gradient(105deg,transparent 0%,rgba(83,170,255,.08) 21%,rgba(213,240,255,1) 50%,rgba(83,170,255,.18) 79%,transparent 100%)!important;
+  filter:blur(.6px) drop-shadow(0 0 12px rgba(75,164,255,1))!important;
+}
+header.topbar .wordmark:hover>.header-logo-native-sweep{
+  animation:header-logo-straight-sweep 1.65s cubic-bezier(.22,.61,.36,1) infinite!important;
+}
+@keyframes header-logo-straight-sweep{
+  0%{opacity:0;transform:translateX(-118px) skewX(-18deg)}
+  18%{opacity:1;transform:translateX(-28px) skewX(-18deg)}
+  62%{opacity:1;transform:translateX(250px) skewX(-18deg)}
+  100%{opacity:0;transform:translateX(500px) skewX(-18deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  header.topbar .wordmark:hover>.header-logo-native-sweep{animation:none!important}
+  footer#contact .lumos-whatsapp:hover>.lumos-native-arrow{transform:none!important}
+}
+
+/* Reset the accumulated logo/CTA experiments. Only the two rules below are
+   allowed to animate, which prevents browser-specific cascade differences. */
+header.topbar .wordmark::before,
+header.topbar .wordmark::after,
+header.topbar .wordmark>.brand-aura,
+header.topbar .wordmark>.brand-sweep,
+header.topbar .wordmark>.header-logo-sweep,
+header.topbar .wordmark>.header-logo-native-sweep{
+  display:none!important;
+  animation:none!important;
+}
+header.topbar .wordmark,
+header.topbar .wordmark:hover{
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+}
+header.topbar .wordmark>img,
+header.topbar .wordmark:hover>img{
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+}
+footer#contact .lumos-whatsapp::before,
+footer#contact .lumos-whatsapp::after{
+  display:none!important;
+  animation:none!important;
+}
+footer#contact .lumos-whatsapp>.lumos-native-border{
+  z-index:2!important;
+  border:0!important;
+  transform:none!important;
+}
+footer#contact .lumos-whatsapp>.lumos-native-arrow{z-index:3!important}
+
+/* Keep the featured-work copy inset from the glass edge. */
+.reel-head{
+  box-sizing:border-box!important;
+  min-height:92px!important;
+  padding:24px 32px!important;
+  border-top:1px solid rgba(161,191,230,.48)!important;
+}
+.reel-head h2{margin:0!important}
+@media(max-width:700px){
+  .reel-head{min-height:72px!important;padding:18px 22px!important}
+}
+
+/* Final interaction authority. The header uses one image only; its highlight
+   is the same uninterrupted light band used by the footer wordmark. */
+header.topbar .wordmark,
+header.topbar .wordmark:hover{
+  position:relative!important;
+  overflow:visible!important;
+  isolation:isolate!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+}
+header.topbar .wordmark::before{display:none!important}
+header.topbar .wordmark>.header-logo-art{
+  position:relative!important;
+  display:block!important;
+  flex:none!important;
+  line-height:0!important;
+  isolation:isolate!important;
+}
+header.topbar .wordmark>.header-logo-art>img,
+header.topbar .wordmark:hover>.header-logo-art>img{
+  position:relative!important;
+  z-index:1!important;
+  display:block!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+}
+header.topbar .wordmark::after{
+  content:none!important;
+  display:none!important;
+}
+header.topbar .wordmark>.header-logo-art>.header-logo-light-pass{
+  position:absolute!important;
+  z-index:2!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  pointer-events:none!important;
+  opacity:0;
+  background:linear-gradient(105deg,transparent 33%,rgba(83,170,255,.16) 42%,rgba(222,244,255,1) 50%,rgba(83,170,255,.24) 58%,transparent 67%);
+  background-size:220% 100%;
+  background-position:200% 0;
+  -webkit-mask-image:url("/quasar-header-logo-cropped.png");
+  -webkit-mask-repeat:no-repeat;
+  -webkit-mask-position:center;
+  -webkit-mask-size:100% 100%;
+  mask-image:url("/quasar-header-logo-cropped.png");
+  mask-repeat:no-repeat;
+  mask-position:center;
+  mask-size:100% 100%;
+  filter:drop-shadow(0 0 8px rgba(75,164,255,.85));
+  mix-blend-mode:screen;
+}
+header.topbar .wordmark:hover>.header-logo-art>.header-logo-light-pass{
+  animation:quasar-header-light-pass 1.05s cubic-bezier(.22,.61,.36,1) infinite!important;
+}
+@keyframes quasar-header-light-pass{
+  0%{opacity:0;background-position:200% 0}
+  14%{opacity:1}
+  86%{opacity:1}
+  100%{opacity:0;background-position:-100% 0}
+}
+
+/* Lumos CTA: the bright dash follows the rounded SVG outline, so it travels
+   through all four edges without rotating or clipping the card itself. */
+footer#contact .lumos-whatsapp{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:visible!important;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow{
+  position:absolute!important;
+  z-index:2!important;
+  inset:-1px!important;
+  display:block!important;
+  width:calc(100% + 2px)!important;
+  height:calc(100% + 2px)!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow rect{
+  vector-effect:non-scaling-stroke;
+  fill:none;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow .lumos-edge-track{
+  stroke:rgba(125,190,255,.40);
+  stroke-width:1;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow .lumos-edge-glow{
+  stroke:rgba(199,232,255,.98);
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-dasharray:9 91;
+  stroke-dashoffset:0;
+  opacity:0;
+  filter:drop-shadow(0 0 5px rgba(88,176,255,.95));
+}
+footer#contact .lumos-whatsapp:hover>.lumos-edge-flow .lumos-edge-glow{
+  opacity:1;
+  animation:lumos-edge-run 1.65s linear infinite!important;
+}
+@keyframes lumos-edge-run{
+  to{stroke-dashoffset:-100}
+}
+footer#contact .lumos-whatsapp>.lumos-native-arrow,
+footer#contact .lumos-whatsapp:hover>.lumos-native-arrow{
+  transform:none!important;
+  filter:none!important;
+}
+footer#contact .lumos-whatsapp>.lumos-native-arrow>.lumos-arrow{
+  animation:none!important;
+  transform:translateX(0);
+}
+footer#contact .lumos-whatsapp:hover>.lumos-native-arrow>.lumos-arrow{
+  animation:lumos-arrow-hover-loop .62s cubic-bezier(.45,.05,.55,.95) infinite alternate!important;
+}
+@keyframes lumos-arrow-hover-loop{
+  from{transform:translateX(0);filter:drop-shadow(0 0 2px rgba(145,204,255,.35))}
+  to{transform:translateX(10px);filter:drop-shadow(0 0 8px rgba(145,204,255,.95))}
+}
+@media(prefers-reduced-motion:reduce){
+  header.topbar .wordmark:hover>.header-logo-art>.header-logo-light-pass,
+  footer#contact .lumos-whatsapp:hover>.lumos-edge-flow .lumos-edge-glow,
+  footer#contact .lumos-whatsapp:hover>.lumos-native-arrow>.lumos-arrow{
+    animation:none!important;
+  }
+  header.topbar .wordmark:hover>.header-logo-art>.header-logo-light-pass,
+  footer#contact .lumos-whatsapp:hover>.lumos-edge-flow .lumos-edge-glow{opacity:0!important}
+}
+
+/* === FINAL ACCEPTANCE OVERRIDES: header shimmer + Lumos CTA === */
+/* Header: one light pass, clipped by the actual transparent logo alpha. It runs
+   continuously without duplicating, scaling or shadowing the logo artwork. */
+header.topbar .wordmark>.header-logo-art{
+  overflow:hidden!important;
+}
+header.topbar .wordmark>.header-logo-art>.header-logo-light-pass,
+header.topbar .wordmark:hover>.header-logo-art>.header-logo-light-pass{
+  opacity:1!important;
+  filter:none!important;
+  mix-blend-mode:screen!important;
+  background:linear-gradient(105deg,
+    transparent 36%,
+    rgba(108,185,255,.10) 43%,
+    rgba(235,248,255,.98) 50%,
+    rgba(108,185,255,.16) 57%,
+    transparent 64%)!important;
+  background-size:240% 100%!important;
+  animation:quasar-header-light-pass-final 1.7s linear infinite!important;
+  -webkit-mask-image:url("/quasar-header-logo-cropped.png")!important;
+  -webkit-mask-repeat:no-repeat!important;
+  -webkit-mask-position:center!important;
+  -webkit-mask-size:100% 100%!important;
+  mask-image:url("/quasar-header-logo-cropped.png")!important;
+  mask-repeat:no-repeat!important;
+  mask-position:center!important;
+  mask-size:100% 100%!important;
+}
+@keyframes quasar-header-light-pass-final{
+  0%{background-position:190% 0}
+  100%{background-position:-140% 0}
+}
+
+/* Lumos: SVG stroke is the border itself. The dash advances over the entire
+   rounded perimeter, including all four corners and both horizontal edges. */
+footer#contact .lumos-whatsapp{
+  overflow:visible!important;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow{
+  inset:-2px!important;
+  width:calc(100% + 4px)!important;
+  height:calc(100% + 4px)!important;
+  overflow:visible!important;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow .lumos-edge-glow{
+  stroke-dasharray:8 92!important;
+  stroke-dashoffset:0!important;
+  stroke-width:2.2!important;
+  stroke-linecap:round!important;
+  opacity:0!important;
+}
+footer#contact .lumos-whatsapp:hover>.lumos-edge-flow .lumos-edge-glow{
+  opacity:1!important;
+  animation:lumos-edge-run-final 1.5s linear infinite!important;
+}
+@keyframes lumos-edge-run-final{
+  from{stroke-dashoffset:0}
+  to{stroke-dashoffset:-100}
+}
+
+/* Arrow: no idle animation; it loops for the full duration of pointer hover. */
+footer#contact .lumos-whatsapp>.lumos-native-arrow>.lumos-arrow{
+  animation:none!important;
+  transform:translateX(0)!important;
+}
+footer#contact .lumos-whatsapp:hover>.lumos-native-arrow>.lumos-arrow{
+  animation:lumos-arrow-hover-final .58s ease-in-out infinite alternate!important;
+}
+@keyframes lumos-arrow-hover-final{
+  from{transform:translateX(0)}
+  to{transform:translateX(9px)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  header.topbar .wordmark>.header-logo-art>.header-logo-light-pass,
+  header.topbar .wordmark:hover>.header-logo-art>.header-logo-light-pass,
+  footer#contact .lumos-whatsapp:hover>.lumos-edge-flow .lumos-edge-glow,
+  footer#contact .lumos-whatsapp:hover>.lumos-native-arrow>.lumos-arrow{
+    animation:none!important;
+  }
+  header.topbar .wordmark>.header-logo-art>.header-logo-light-pass,
+  header.topbar .wordmark:hover>.header-logo-art>.header-logo-light-pass,
+  footer#contact .lumos-whatsapp:hover>.lumos-edge-flow .lumos-edge-glow{
+    opacity:0!important;
+  }
+}
+
+/* === FIX 2026-09-03: Lumos CTA border integrity ===
+   Keep a single physical card outline. The animated SVG stays inside the same
+   rounded clipping box, so it can never create a detached frame around the arrow. */
+footer#contact .lumos-whatsapp{
+  overflow:hidden!important;
+  border:1px solid rgba(126,181,255,.50)!important;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow{
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+  border-radius:inherit!important;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow .lumos-edge-track{
+  opacity:0!important;
+  stroke:transparent!important;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow .lumos-edge-glow{
+  stroke-width:1.6!important;
+}
+footer#contact .lumos-whatsapp>.lumos-native-arrow,
+footer#contact .lumos-whatsapp>.lumos-native-arrow:hover,
+footer#contact .lumos-whatsapp>.lumos-native-arrow:focus,
+footer#contact .lumos-whatsapp>.lumos-native-arrow:focus-visible{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border-radius:0!important;
+}
+
+/* === FINAL STABLE FIX 2026-09-03 ===
+   One physical border only. No overlay SVG/frame around the arrow. */
+footer#contact .lumos-whatsapp{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid rgba(126,181,255,.50)!important;
+  outline:0!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 28px rgba(0,0,0,.16)!important;
+}
+footer#contact .lumos-whatsapp>.lumos-edge-flow{display:none!important}
+footer#contact .lumos-whatsapp>.lumos-native-border{display:none!important}
+footer#contact .lumos-whatsapp>.lumos-native-arrow,
+footer#contact .lumos-whatsapp>.lumos-native-arrow:hover,
+footer#contact .lumos-whatsapp>.lumos-native-arrow:focus,
+footer#contact .lumos-whatsapp>.lumos-native-arrow:focus-visible{
+  position:static!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  height:auto!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border-radius:0!important;
+  transform:none!important;
+}
+
+/* Three-client website showcase: balanced desktop grid, responsive fallback. */
+@media (min-width:1101px){
+  .websites-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media (min-width:701px) and (max-width:1100px){
+  .websites-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
