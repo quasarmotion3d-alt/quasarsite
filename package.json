@@ -4,7 +4,7 @@
   "private": true,
   "engines": { "node": "24.x" },
   "scripts": {
-    "build": "cat project.b64.* | base64 -d > project.tgz && tar -xzf project.tgz && node -e \"const fs=require('fs');const p='app/page.tsx';let s=fs.readFileSync(p,'utf8');s=s.replace('const asset = (name: string) => `/assets/${name}`;', 'const asset = (name: string) => `https://raw.githubusercontent.com/yanekissayabully/quasarsite/main/public/assets/${name}`;');fs.writeFileSync(p,s);\" && vite build --config vite.vercel.config.ts"
+    "build": "cat project.b64.* | base64 -d > project.tgz && tar -xzf project.tgz && python3 - <<'PY'\nfrom pathlib import Path\np=Path('app/page.tsx')\ns=p.read_text()\ns=s.replace('const asset = (name: string) => `/assets/${name}`;', 'const asset = (name: string) => `https://raw.githubusercontent.com/yanekissayabully/quasarsite/main/public/assets/${name}`;')\np.write_text(s)\nPY\nvite build --config vite.vercel.config.ts"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
