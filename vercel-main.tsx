@@ -6,3 +6,4 @@ import './app/finalization.css';
 createRoot(document.getElementById('root')!).render(<Home />);
 
 void import('./app/finalization');
+void import('./app/video-loop');
