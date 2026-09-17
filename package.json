@@ -6,7 +6,8 @@
     "node": "24.x"
   },
   "scripts": {
-    "build": "vite build --config vite.vercel.config.ts"
+    "test:release": "node --test tests/release-candidate.test.mjs",
+    "build": "npm run test:release && vite build --config vite.vercel.config.ts"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
