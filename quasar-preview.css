@@ -1894,3 +1894,22 @@ body {
 .topbar.is-scrolled {
   background: rgba(17, 22, 29, .34) !important;
 }
+
+
+/* 2026-09-18 remove AI video side bars */
+.project-viewer.is-ai-video .project-viewer__video{
+  width:auto !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  aspect-ratio:9 / 16 !important;
+  flex:0 0 auto !important;
+  background:#000 !important;
+}
+.project-viewer.is-ai-video .project-viewer__video iframe{
+  width:100% !important;
+  height:100% !important;
+  border:0 !important;
+  display:block !important;
+  background:#000 !important;
+}
