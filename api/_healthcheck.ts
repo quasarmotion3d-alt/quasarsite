@@ -1,0 +1,1 @@
+export default function handler(_req: any, res: any) {\n  return res.status(200).json({ message: 'Success' });\n}\n
