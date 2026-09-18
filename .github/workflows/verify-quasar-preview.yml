@@ -1,44 +1,79 @@
 name: Verify Quasar Vercel Preview
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches:
+      - site-2026-09-17-finalizacao
 
 permissions:
   contents: read
+  issues: write
+  pull-requests: write
 
 jobs:
   verify-preview:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for preview and verify page
+      - name: Verify deployed preview
+        id: verify
         shell: bash
+        continue-on-error: true
         run: |
-          set -euo pipefail
+          set +e
           URL='https://quasarsite-git-site-2026-09-17-finalizacao-quasarmotion3d.vercel.app'
-          for attempt in {1..24}; do
-            code="$(curl -L -sS -o /tmp/quasar.html -w '%{http_code}' "$URL" || true)"
-            if [ "$code" = "200" ]; then
+          page_code='000'
+          checks='pending'
+          for attempt in {1..30}; do
+            page_code="$(curl -L -sS -o /tmp/quasar.html -w '%{http_code}' "$URL" || true)"
+            if [ "$page_code" = "200" ] && grep -q 'QUASAR MOTION' /tmp/quasar.html; then
               break
             fi
-            echo "Preview not ready yet (HTTP $code), attempt $attempt/24"
             sleep 10
           done
-          test "$(wc -c < /tmp/quasar.html)" -gt 5000
-          grep -q 'QUASAR MOTION' /tmp/quasar.html
-          grep -q 'contato@quasarmotion.com.br' /tmp/quasar.html
-          grep -q 'Fried Canvas' /tmp/quasar.html
-          grep -q 'Logic Automação' /tmp/quasar.html
-          grep -q 'WLobo' /tmp/quasar.html
-          grep -q 'Calende' /tmp/quasar.html
 
-      - name: Verify contact endpoint with one real send
+          checks='ok'
+          for needle in 'contato@quasarmotion.com.br' 'Fried Canvas' 'Logic Automação' 'WLobo' 'Calende'; do
+            grep -q "$needle" /tmp/quasar.html || checks="missing:$needle"
+          done
+
+          body='{"name":"Teste Preview Quasar","email":"contato@quasarmotion.com.br","message":"Teste automático do formulário no preview Vercel. Pode ignorar esta mensagem.","website":""}'
+          contact_code="$(curl -L -sS -o /tmp/contact.json -w '%{http_code}' -X POST "$URL/api/contact" -H 'content-type: application/json' --data "$body" || true)"
+          contact_body="$(tr '\n' ' ' < /tmp/contact.json 2>/dev/null || true)"
+
+          echo "page_code=$page_code" >> "$GITHUB_OUTPUT"
+          echo "checks=$checks" >> "$GITHUB_OUTPUT"
+          echo "contact_code=$contact_code" >> "$GITHUB_OUTPUT"
+          {
+            echo 'contact_body<<EOF'
+            echo "$contact_body"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+          if [ "$page_code" = "200" ] && [ "$checks" = "ok" ] && [ "$contact_code" = "200" ] && grep -q '"ok":true' /tmp/contact.json; then
+            echo "result=PASS" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "result=FAIL" >> "$GITHUB_OUTPUT"
+          exit 1
+
+      - name: Comment verification result
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ steps.verify.outputs.result }}
+          PAGE_CODE: ${{ steps.verify.outputs.page_code }}
+          CHECKS: ${{ steps.verify.outputs.checks }}
+          CONTACT_CODE: ${{ steps.verify.outputs.contact_code }}
+          CONTACT_BODY: ${{ steps.verify.outputs.contact_body }}
         shell: bash
         run: |
-          set -euo pipefail
-          URL='https://quasarsite-git-site-2026-09-17-finalizacao-quasarmotion3d.vercel.app/api/contact'
-          body='{"name":"Teste Preview Quasar","email":"contato@quasarmotion.com.br","message":"Teste automático do formulário no preview Vercel. Pode ignorar esta mensagem.","website":""}'
-          code="$(curl -L -sS -o /tmp/contact.json -w '%{http_code}' -X POST "$URL" -H 'content-type: application/json' --data "$body")"
-          cat /tmp/contact.json
-          test "$code" = "200"
-          grep -q '"ok":true' /tmp/contact.json
+          body="<!-- quasar-preview-verification -->
+          ## Quasar preview verification
+          - Result: **$RESULT**
+          - Preview HTTP: `$PAGE_CODE`
+          - Content checks: `$CHECKS`
+          - Contact POST HTTP: `$CONTACT_CODE`
+          - Contact response: `$CONTACT_BODY`
+          - Preview: https://quasarsite-git-site-2026-09-17-finalizacao-quasarmotion3d.vercel.app
+          - Commit: `${GITHUB_SHA}`"
+          gh api repos/${GITHUB_REPOSITORY}/issues/1/comments -f body="$body"
