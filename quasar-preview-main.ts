@@ -18,6 +18,11 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 }
 
 const header = document.querySelector<HTMLElement>('.topbar');
+if (header) {
+  const glassFilter = 'blur(36px) saturate(155%) contrast(105%)';
+  header.style.setProperty('backdrop-filter', glassFilter, 'important');
+  header.style.setProperty('-webkit-backdrop-filter', glassFilter, 'important');
+}
 const progress = document.querySelector<HTMLElement>('.scroll-progress span');
 const syncScroll = () => {
   header?.classList.toggle('is-scrolled', window.scrollY > 24);
