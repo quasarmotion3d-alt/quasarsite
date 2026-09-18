@@ -29,20 +29,27 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 
 const studio = document.querySelector<HTMLElement>('.studio');
 if (studio) {
-  if (reducedMotion || !('IntersectionObserver' in window)) {
-    studio.classList.add('studio-near');
-  } else {
-    const studioObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => studio.classList.add('studio-near'));
-        });
-        studioObserver.disconnect();
-      });
-    }, { threshold: 0.01, rootMargin: '0px 0px 120px 0px' });
-    studioObserver.observe(studio);
-  }
+  let studioPlayed = false;
+
+  const maybePlayStudio = () => {
+    if (studioPlayed) return;
+    const rect = studio.getBoundingClientRect();
+    const triggerLine = window.innerHeight * 0.72;
+
+    if (rect.top <= triggerLine && rect.bottom > 0) {
+      studioPlayed = true;
+      studio.classList.add('studio-play');
+      window.removeEventListener('scroll', maybePlayStudio);
+      window.removeEventListener('resize', maybePlayStudio);
+    }
+  };
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(maybePlayStudio);
+  });
+
+  window.addEventListener('scroll', maybePlayStudio, { passive: true });
+  window.addEventListener('resize', maybePlayStudio, { passive: true });
 }
 
 const header = document.querySelector<HTMLElement>('.topbar');
