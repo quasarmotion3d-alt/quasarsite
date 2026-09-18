@@ -1,3 +1,13 @@
+// 2026-09-18 always start at top on reload
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+const forcePageTop = () => window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+forcePageTop();
+window.addEventListener('pageshow', forcePageTop);
+window.addEventListener('load', () => {
+  forcePageTop();
+  window.setTimeout(forcePageTop, 0);
+});
+
 import './quasar-preview.css';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
