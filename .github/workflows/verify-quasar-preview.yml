@@ -21,20 +21,15 @@ jobs:
         run: |
           set +e
           URL='https://quasarsite-git-site-2026-09-17-finalizacao-quasarmotion3d.vercel.app'
-          page_code='000'
-          checks='pending'
-          for attempt in {1..30}; do
-            page_code="$(curl -L -sS -o /tmp/quasar.html -w '%{http_code}' "$URL" || true)"
-            if [ "$page_code" = "200" ] && grep -q 'QUASAR MOTION' /tmp/quasar.html; then
-              break
-            fi
-            sleep 10
+
+          page_code="$(curl -L -sS -o /tmp/quasar.html -w '%{http_code}' "$URL" || true)"
+          checks='ok'
+          for needle in 'QUASAR MOTION' 'contato@quasarmotion.com.br' 'Fried Canvas' 'Logic Automação' 'WLobo' 'Calende'; do
+            grep -q "$needle" /tmp/quasar.html 2>/dev/null || checks="missing:$needle"
           done
 
-          checks='ok'
-          for needle in 'contato@quasarmotion.com.br' 'Fried Canvas' 'Logic Automação' 'WLobo' 'Calende'; do
-            grep -q "$needle" /tmp/quasar.html || checks="missing:$needle"
-          done
+          health_code="$(curl -L -sS -o /tmp/health.json -w '%{http_code}' "$URL/api/_healthcheck" || true)"
+          health_body="$(tr '\n' ' ' < /tmp/health.json 2>/dev/null || true)"
 
           body='{"name":"Teste Preview Quasar","email":"contato@quasarmotion.com.br","message":"Teste automático do formulário no preview Vercel. Pode ignorar esta mensagem.","website":""}'
           contact_code="$(curl -L -sS -o /tmp/contact.json -w '%{http_code}' -X POST "$URL/api/contact" -H 'content-type: application/json' --data "$body" || true)"
@@ -42,14 +37,12 @@ jobs:
 
           echo "page_code=$page_code" >> "$GITHUB_OUTPUT"
           echo "checks=$checks" >> "$GITHUB_OUTPUT"
+          echo "health_code=$health_code" >> "$GITHUB_OUTPUT"
+          echo "health_body=$health_body" >> "$GITHUB_OUTPUT"
           echo "contact_code=$contact_code" >> "$GITHUB_OUTPUT"
-          {
-            echo 'contact_body<<EOF'
-            echo "$contact_body"
-            echo 'EOF'
-          } >> "$GITHUB_OUTPUT"
+          echo "contact_body=$contact_body" >> "$GITHUB_OUTPUT"
 
-          if [ "$page_code" = "200" ] && [ "$checks" = "ok" ] && [ "$contact_code" = "200" ] && grep -q '"ok":true' /tmp/contact.json; then
+          if [ "$page_code" = "200" ] && [ "$checks" = "ok" ] && [ "$health_code" = "200" ] && [ "$contact_code" = "200" ] && grep -q '"ok":true' /tmp/contact.json; then
             echo "result=PASS" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -63,6 +56,8 @@ jobs:
           RESULT: ${{ steps.verify.outputs.result }}
           PAGE_CODE: ${{ steps.verify.outputs.page_code }}
           CHECKS: ${{ steps.verify.outputs.checks }}
+          HEALTH_CODE: ${{ steps.verify.outputs.health_code }}
+          HEALTH_BODY: ${{ steps.verify.outputs.health_body }}
           CONTACT_CODE: ${{ steps.verify.outputs.contact_code }}
           CONTACT_BODY: ${{ steps.verify.outputs.contact_body }}
         shell: bash
@@ -72,6 +67,7 @@ jobs:
           - Result: **$RESULT**
           - Preview HTTP: `$PAGE_CODE`
           - Content checks: `$CHECKS`
+          - Health HTTP: `$HEALTH_CODE` — `$HEALTH_BODY`
           - Contact POST HTTP: `$CONTACT_CODE`
           - Contact response: `$CONTACT_BODY`
           - Preview: https://quasarsite-git-site-2026-09-17-finalizacao-quasarmotion3d.vercel.app
