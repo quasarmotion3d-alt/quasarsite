@@ -1,0 +1,44 @@
+name: Verify Quasar Vercel Preview
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for preview and verify page
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://quasarsite-git-site-2026-09-17-finalizacao-quasarmotion3d.vercel.app'
+          for attempt in {1..24}; do
+            code="$(curl -L -sS -o /tmp/quasar.html -w '%{http_code}' "$URL" || true)"
+            if [ "$code" = "200" ]; then
+              break
+            fi
+            echo "Preview not ready yet (HTTP $code), attempt $attempt/24"
+            sleep 10
+          done
+          test "$(wc -c < /tmp/quasar.html)" -gt 5000
+          grep -q 'QUASAR MOTION' /tmp/quasar.html
+          grep -q 'contato@quasarmotion.com.br' /tmp/quasar.html
+          grep -q 'Fried Canvas' /tmp/quasar.html
+          grep -q 'Logic Automação' /tmp/quasar.html
+          grep -q 'WLobo' /tmp/quasar.html
+          grep -q 'Calende' /tmp/quasar.html
+
+      - name: Verify contact endpoint with one real send
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://quasarsite-git-site-2026-09-17-finalizacao-quasarmotion3d.vercel.app/api/contact'
+          body='{"name":"Teste Preview Quasar","email":"contato@quasarmotion.com.br","message":"Teste automático do formulário no preview Vercel. Pode ignorar esta mensagem.","website":""}'
+          code="$(curl -L -sS -o /tmp/contact.json -w '%{http_code}' -X POST "$URL" -H 'content-type: application/json' --data "$body")"
+          cat /tmp/contact.json
+          test "$code" = "200"
+          grep -q '"ok":true' /tmp/contact.json
