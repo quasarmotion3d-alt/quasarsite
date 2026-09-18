@@ -1791,3 +1791,51 @@ body {
 .topbar nav a:focus-visible:after {
   transform: scaleX(1);
 }
+
+
+/* 2026-09-18 portrait AI viewer refinement */
+.project-viewer.is-ai-video .project-viewer__panel{
+  width:min(90vw,980px);
+  max-height:94vh;
+  padding:14px;
+  background:#050608 !important;
+}
+.project-viewer.is-ai-video .project-viewer__media{
+  height:min(78vh,860px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:12px;
+  background:#000 !important;
+  border-color:rgba(255,255,255,.10);
+}
+.project-viewer.is-ai-video .project-viewer__video{
+  width:min(100%,540px);
+  height:100%;
+  max-height:100%;
+  aspect-ratio:9/16;
+  margin:0 auto;
+  border-radius:14px;
+  background:#000 !important;
+  box-shadow:0 18px 55px rgba(0,0,0,.62);
+}
+.project-viewer.is-ai-video .project-viewer__video iframe{
+  background:#000 !important;
+}
+.project-viewer.is-ai-video .project-viewer__meta{
+  padding:14px 10px 4px;
+}
+@media(max-width:740px){
+  .project-viewer.is-ai-video .project-viewer__panel{
+    width:100%;
+    max-height:calc(100dvh - 16px);
+  }
+  .project-viewer.is-ai-video .project-viewer__media{
+    height:calc(100dvh - 126px);
+    padding:6px;
+  }
+  .project-viewer.is-ai-video .project-viewer__video{
+    width:min(100%,calc((100dvh - 150px) * .5625));
+  }
+}
