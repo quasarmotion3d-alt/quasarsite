@@ -148,6 +148,7 @@ const appendViewerImage = (src: string, title: string, index: number) => {
 const closeViewer = () => {
   if (!viewer.classList.contains('is-open')) return;
   viewer.classList.remove('is-open');
+  viewer.classList.remove('is-ai-video');
   viewer.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('viewer-open');
   if (viewerMedia) viewerMedia.innerHTML = '';
@@ -165,6 +166,7 @@ const openViewer = (card: HTMLAnchorElement) => {
   const images = media.images || (videos.length === 0 && sourceImage ? [sourceImage.currentSrc || sourceImage.src] : []);
   const eyebrow = card.querySelector('small')?.textContent?.trim() || (videos.length ? 'VIDEO' : 'PROJETO');
   viewerMedia.innerHTML = '';
+  viewer.classList.toggle('is-ai-video', card.classList.contains('vertical') && videos.length > 0);
   videos.forEach(videoId => appendViewerVideo(videoId, title));
   images.forEach((src, index) => appendViewerImage(src, title, index));
   viewerTitle.textContent = title;
