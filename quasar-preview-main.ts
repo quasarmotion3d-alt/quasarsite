@@ -27,6 +27,22 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
   revealNodes.forEach(node => revealObserver.observe(node));
 }
 
+const studio = document.querySelector<HTMLElement>('.studio');
+if (studio) {
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    studio.classList.add('studio-near');
+  } else {
+    const studioObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        studio.classList.add('studio-near');
+        studioObserver.disconnect();
+      });
+    }, { threshold: 0.01, rootMargin: '0px 0px 32% 0px' });
+    studioObserver.observe(studio);
+  }
+}
+
 const header = document.querySelector<HTMLElement>('.topbar');
 if (header) {
   const glassFilter = 'blur(36px) saturate(155%) contrast(105%)';
