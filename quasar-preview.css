@@ -2425,17 +2425,6 @@ body{
   from{background-position:100% 50%}
   to{background-position:0% 50%}
 }
-@media(prefers-reduced-motion:reduce){
-  .studio-motion-ready>span,
-  .studio-motion-ready .studio-line,
-  .studio-motion-ready>p,
-  .studio-motion-ready .team{
-    opacity:1!important;
-    transform:none!important;
-    filter:none!important;
-    animation:none!important;
-  }
-}
 
 
 /* ===== LOGO FIRST-PAINT HARDENING ===== */

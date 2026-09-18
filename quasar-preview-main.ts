@@ -28,7 +28,7 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 }
 
 const studio = document.querySelector<HTMLElement>('.studio');
-if (studio && !reducedMotion) {
+if (studio) {
   studio.classList.add('studio-motion-ready');
 
   const studioObserver = new IntersectionObserver(entries => {
@@ -39,7 +39,7 @@ if (studio && !reducedMotion) {
     studioObserver.disconnect();
   }, {
     threshold: 0.01,
-    rootMargin: '0px',
+    rootMargin: '0px 0px -28% 0px',
   });
 
   studioObserver.observe(studio);
