@@ -20,6 +20,10 @@ function removeLargeReel() {
   document.querySelector<HTMLElement>('#reel')?.remove();
 }
 
+function removeHeroMeta() {
+  document.querySelector<HTMLElement>('.hero .meta')?.remove();
+}
+
 function reorderWebsites() {
   const grid = document.querySelector<HTMLElement>('.websites-grid');
   if (!grid) return;
@@ -191,6 +195,7 @@ function finalizePartners() {
 function applyFinalization() {
   removeHintCopy();
   removeLargeReel();
+  removeHeroMeta();
   reorderWebsites();
   finalizeAiSection();
   finalizeContact();
