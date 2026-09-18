@@ -30,27 +30,19 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 const studio = document.querySelector<HTMLElement>('.studio');
 if (studio && !reducedMotion) {
   studio.classList.add('studio-motion-ready');
-  let studioPlayed = false;
 
-  const maybePlayStudio = () => {
-    if (studioPlayed) return;
-    const rect = studio.getBoundingClientRect();
-    const triggerLine = window.innerHeight * 0.72;
+  const studioObserver = new IntersectionObserver(entries => {
+    const entry = entries[0];
+    if (!entry?.isIntersecting) return;
 
-    if (rect.top <= triggerLine && rect.bottom > 0) {
-      studioPlayed = true;
-      studio.classList.add('studio-play');
-      window.removeEventListener('scroll', maybePlayStudio);
-      window.removeEventListener('resize', maybePlayStudio);
-    }
-  };
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(maybePlayStudio);
+    studio.classList.add('studio-play');
+    studioObserver.disconnect();
+  }, {
+    threshold: 0.01,
+    rootMargin: '0px',
   });
 
-  window.addEventListener('scroll', maybePlayStudio, { passive: true });
-  window.addEventListener('resize', maybePlayStudio, { passive: true });
+  studioObserver.observe(studio);
 }
 
 const header = document.querySelector<HTMLElement>('.topbar');
