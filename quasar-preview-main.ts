@@ -229,6 +229,8 @@ if (!reducedMotion && finePointer) {
     if (cursor) cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
   }, { passive: true });
 
+  // Kinetic refined: pointer only moves the light origin.
+  // The card hitbox never tilts or moves, preventing hover enter/leave loops at edges.
   document.querySelectorAll<HTMLElement>('.project, .service-grid a, .web-grid article, .vertical').forEach(card => {
     card.addEventListener('pointermove', event => {
       const rect = card.getBoundingClientRect();
@@ -236,25 +238,6 @@ if (!reducedMotion && finePointer) {
       const y = (event.clientY - rect.top) / rect.height;
       card.style.setProperty('--px', `${x * 100}%`);
       card.style.setProperty('--py', `${y * 100}%`);
-      card.style.setProperty('--rx', `${(0.5 - y) * 2.4}deg`);
-      card.style.setProperty('--ry', `${(x - 0.5) * 2.4}deg`);
     });
-    card.addEventListener('pointerleave', () => {
-      card.style.removeProperty('--rx');
-      card.style.removeProperty('--ry');
-    });
-  });
-
-  const heroArt = document.querySelector<HTMLElement>('.hero-art');
-  heroArt?.addEventListener('pointermove', event => {
-    const rect = heroArt.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    heroArt.style.setProperty('--mx', `${x * 12}px`);
-    heroArt.style.setProperty('--my', `${y * 12}px`);
-  });
-  heroArt?.addEventListener('pointerleave', () => {
-    heroArt.style.setProperty('--mx', '0px');
-    heroArt.style.setProperty('--my', '0px');
   });
 }
