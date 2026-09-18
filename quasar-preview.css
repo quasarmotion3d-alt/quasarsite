@@ -2141,3 +2141,85 @@ body{
     transform:none!important;
   }
 }
+
+
+/* ===== KINETIC POLISH: media zoom + website cases ===== */
+.project>img,.vertical>img,.reel-poster img{
+  transform:scale(1.008)!important;
+  transition:transform 1.7s cubic-bezier(.42,0,.58,1),filter 1.05s cubic-bezier(.42,0,.58,1)!important;
+}
+.project:hover>img,.vertical:hover>img,.reel-poster:hover img{
+  transform:scale(1.032)!important;
+  filter:brightness(1.025) saturate(1.07) contrast(1.02)!important;
+}
+.card-play-indicator{
+  transition:opacity .45s ease,transform .7s cubic-bezier(.42,0,.58,1),background .45s ease,box-shadow .5s ease!important;
+}
+.web-grid{gap:16px!important}
+.web-card{
+  position:relative;display:block;min-width:0;overflow:hidden;
+  border:1px solid rgba(255,255,255,.15);border-radius:18px;color:inherit;text-decoration:none;
+  background:linear-gradient(145deg,rgba(34,37,42,.70),rgba(20,22,26,.80));
+  box-shadow:0 26px 72px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.055);
+  cursor:pointer;transition:border-color .4s ease,box-shadow .55s var(--kinetic-soft),background .45s ease!important;
+}
+.web-card:hover{
+  border-color:rgba(112,195,255,.36);
+  box-shadow:0 34px 90px rgba(0,0,0,.58),0 0 0 1px rgba(101,181,255,.06),0 0 36px rgba(62,133,225,.075),inset 0 1px 0 rgba(255,255,255,.075);
+}
+.web-card:after{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,transparent 55%,rgba(8,10,14,.17) 100%);opacity:.7;
+}
+.web-card .browser{
+  position:relative;z-index:1;width:calc(100% - 28px)!important;height:356px;
+  margin:14px 14px 0!important;padding:0!important;overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);border-radius:14px;background:#0d0f13;transform:none!important;
+}
+.web-card .browser-bar{
+  position:relative;z-index:4;height:34px;padding:0 12px;
+  background:rgba(20,22,27,.96);border-bottom:1px solid rgba(255,255,255,.07);
+}
+.web-card .browser-live{
+  display:block;width:100%;height:470px;border:0;pointer-events:none;transform-origin:top center;
+  filter:saturate(.96) contrast(1.02) brightness(.90);
+  transition:transform 1.55s cubic-bezier(.42,0,.58,1),filter 1s ease!important;
+}
+.web-card--logic .browser-live{transform:translateY(-56px) scale(1.075)}
+.web-card--wlobo .browser-live{transform:translateY(-76px) scale(1.06)}
+.web-card--calende .browser-live{transform:translateY(-64px) scale(1.07)}
+.web-card--logic:hover .browser-live{transform:translateY(-60px) scale(1.09)}
+.web-card--wlobo:hover .browser-live{transform:translateY(-80px) scale(1.075)}
+.web-card--calende:hover .browser-live{transform:translateY(-68px) scale(1.085)}
+.web-card:hover .browser-live{filter:saturate(1.02) contrast(1.025) brightness(.96)}
+.web-card .web-meta{
+  position:relative;z-index:3;min-height:128px;padding:22px 22px 20px!important;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:18px;transform:none!important;
+}
+.web-card .web-meta small{color:#86cfff;font-size:8px;font-weight:800;letter-spacing:.17em}
+.web-card .web-meta h3{margin:7px 0 4px;font-size:clamp(24px,2vw,31px);font-weight:590;letter-spacing:-.045em}
+.web-card .web-meta div>span{color:#8f9bab;font-size:11px}
+.web-cta{
+  flex:0 0 auto;min-height:46px;padding:0 16px;display:inline-flex;align-items:center;gap:12px;
+  border:1px solid rgba(112,195,255,.26);border-radius:999px;color:#f5f9ff;
+  background:linear-gradient(135deg,rgba(54,140,235,.18),rgba(76,91,220,.10));
+  font-size:11px;font-weight:760;letter-spacing:.015em;box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
+  transition:transform .45s var(--kinetic-ease),border-color .35s ease,background .4s ease,box-shadow .45s ease;
+}
+.web-cta b{font-size:16px;font-weight:400;transition:transform .45s var(--kinetic-ease)}
+.web-card:hover .web-cta{
+  transform:translateY(-2px);border-color:rgba(129,211,255,.56);
+  background:linear-gradient(135deg,rgba(58,159,255,.28),rgba(87,103,240,.17));
+  box-shadow:0 10px 28px rgba(52,133,230,.13),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.web-card:hover .web-cta b{transform:translate(3px,-2px)}
+@media(max-width:1060px){.web-card .browser{height:330px}}
+@media(max-width:740px){
+  .web-card .browser{height:300px;margin:10px 10px 0!important;width:calc(100% - 20px)!important}
+  .web-card .browser-live{height:410px}
+  .web-card .web-meta{min-height:112px;padding:18px!important}
+  .web-cta{min-height:42px;padding:0 13px}
+}
+@media(hover:none),(pointer:coarse){
+  .project>img,.vertical>img,.reel-poster img,.project:hover>img,.vertical:hover>img,.reel-poster:hover img{transform:scale(1.008)!important}
+}
