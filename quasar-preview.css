@@ -1877,3 +1877,20 @@ body {
   position: relative;
   z-index: 1;
 }
+
+
+/* 2026-09-18 direct backdrop blur fix */
+.topbar,
+.topbar.is-scrolled {
+  isolation: auto !important;
+  overflow: visible !important;
+  background: rgba(17, 22, 29, .24) !important;
+  backdrop-filter: blur(36px) saturate(155%) contrast(105%) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(155%) contrast(105%) !important;
+}
+.topbar::before {
+  content: none !important;
+}
+.topbar.is-scrolled {
+  background: rgba(17, 22, 29, .34) !important;
+}
