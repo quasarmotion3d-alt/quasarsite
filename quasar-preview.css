@@ -1758,3 +1758,22 @@ body {
     max-height: 54px;
   }
 }
+
+
+/* 2026-09-18 header blur hotfix */
+.topbar {
+  left: 16px;
+  right: 16px;
+  margin-inline: auto;
+  transform: none;
+  background: linear-gradient(90deg, rgba(16,20,27,.34), rgba(25,30,39,.40) 42%, rgba(18,22,29,.35)) !important;
+  backdrop-filter: blur(34px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(34px) saturate(145%) !important;
+  border-color: rgba(220,232,248,.24) !important;
+  box-shadow: 0 18px 46px rgba(0,0,0,.54), inset 0 1px 0 rgba(255,255,255,.11), inset 0 -1px 0 rgba(255,255,255,.035) !important;
+}
+.topbar.is-scrolled {
+  background: linear-gradient(90deg, rgba(16,20,27,.44), rgba(25,30,39,.50) 42%, rgba(18,22,29,.45)) !important;
+  backdrop-filter: blur(34px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(34px) saturate(145%) !important;
+}
