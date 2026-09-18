@@ -35,7 +35,7 @@ if (studio && !reducedMotion) {
   const maybePlayStudio = () => {
     if (studioPlayed) return;
     const rect = studio.getBoundingClientRect();
-    const triggerLine = window.innerHeight * 0.78;
+    const triggerLine = window.innerHeight * 0.72;
 
     if (rect.top <= triggerLine && rect.bottom > 0) {
       studioPlayed = true;

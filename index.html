@@ -16,6 +16,7 @@
     <meta name="twitter:description" content="Produção visual em 3D, CGI, motion, VFX, AI Video e websites." />
     <meta name="twitter:image" content="https://quasarmotion.com.br/assets/quasar-hero-final.webp" />
     <meta name="theme-color" content="#0b0d10" />
+    <link rel="preload" as="image" href="/assets/quasar-header-logo-cropped.png" fetchpriority="high" />
     <title>Quasar Motion — 3D, Motion, VFX, AI Video &amp; Websites</title>
     <link rel="icon" type="image/png" href="https://quasarmotion.com.br/assets/quasar-header-logo-cropped.png" />
   </head>
@@ -27,8 +28,12 @@
         <header class="topbar">
           <a class="brand" href="#top" aria-label="Quasar Motion início"
             ><img
-              src="https://quasarmotion.com.br/assets/quasar-header-logo-cropped.png"
+              src="/assets/quasar-header-logo-cropped.png"
               alt="QUASAR MOTION COMPANY"
+              width="1200"
+              height="375"
+              decoding="sync"
+              fetchpriority="high"
           /></a>
           <nav aria-label="Navegação principal">
             <a href="#work">Trabalhos</a><a href="#services">Atuação</a
@@ -308,11 +313,15 @@
           </div>
           <div class="footer-line">
             <img
-              src="https://quasarmotion.com.br/assets/quasar-header-logo-cropped.png"
-              alt="QUASAR MOTION COMPANY" loading="lazy" decoding="async">
+              src="/assets/quasar-header-logo-cropped.png"
+              alt="QUASAR MOTION COMPANY"
+              width="1200"
+              height="375"
+              loading="lazy"
+              decoding="async">
             <nav>
               <a href="#work">Trabalhos</a><a href="#services">Atuação</a
-              ><a href="#studio">Sobre</a>
+              ><a href="#studio">Sobre</a><a href="#contact">Contato</a>
             </nav>
             <span>Limeira, SP · Brasil</span>
           </div>

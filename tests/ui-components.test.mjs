@@ -27,7 +27,7 @@ test("studio motion is fail-safe and scroll-triggered", async () => {
   const js = await readBuiltAsset(".js");
   const css = await readBuiltAsset(".css");
   assert.match(js, /studio-motion-ready/);
-  assert.match(js, /innerHeight\*\.78|innerHeight\s*\*\s*0\.78/);
+  assert.match(js, /innerHeight\*\.72|innerHeight\s*\*\s*0\.72/);
   assert.match(css, /\.studio-motion-ready\.studio-play/);
 });
 
