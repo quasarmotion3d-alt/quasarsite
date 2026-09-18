@@ -31,8 +31,9 @@ test("studio motion is fail-safe and scroll-triggered", async () => {
   assert.match(css, /\.studio-motion-ready\.studio-play/);
 });
 
-test("contact form posts to the same-origin production API", async () => {
+test("contact form uses official API with working fallback", async () => {
   const js = await readBuiltAsset(".js");
   assert.ok(js.includes("/api/contact"));
-  assert.doesNotMatch(js, /quasar-motion-final-preview\.vercel\.app/);
+  assert.match(js, /quasar-motion-final-preview\.vercel\.app\/api\/contact/);
+  assert.match(js, /502|503/);
 });

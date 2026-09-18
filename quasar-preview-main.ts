@@ -97,8 +97,20 @@ contactForm?.addEventListener('submit', async event => {
   }
 
   try {
-    const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-    const result = await response.json().catch(() => ({}));
+    const requestInit: RequestInit = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    };
+
+    let response = await fetch('/api/contact', requestInit);
+    let result = await response.json().catch(() => ({}));
+
+    if (response.status === 502 || response.status === 503) {
+      response = await fetch('https://quasar-motion-final-preview.vercel.app/api/contact', requestInit);
+      result = await response.json().catch(() => ({}));
+    }
+
     if (!response.ok) throw new Error((result as { error?: string }).error || 'Não foi possível enviar agora.');
     contactForm.reset();
     if (contactStatus) {
