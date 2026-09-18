@@ -1,38 +1,23 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const brandedDocumentMeta = [
-  /<title>QUASAR MOTION COMPANY — 3D, Websites &amp; AI Video<\/title>/i,
-  /<meta(?=[^>]*\bname=["']description["'])(?=[^>]*\bcontent=["']Produtora criativa brasileira especializada em 3D, websites e AI Video\.?["'])[^>]*>/i,
-];
+const html = await readFile(new URL("../vercel-dist/index.html", import.meta.url), "utf8");
 
-test("renders branded document metadata", async () => {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+test("production metadata targets quasarmotion.com.br", () => {
+  assert.match(html, /<title>Quasar Motion — 3D, Motion, VFX, AI Video &amp; Websites<\/title>/i);
+  assert.match(html, /name="description"/i);
+  assert.match(html, /rel="canonical" href="https:\/\/quasarmotion\.com\.br\/"/i);
+  assert.match(html, /property="og:image" content="https:\/\/quasarmotion\.com\.br\/assets\/quasar-hero-final\.webp"/i);
+  assert.doesNotMatch(html, /Quasar Motion \| Preview/i);
+});
 
-  const response = await worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
+test("production HTML has no temporary preview asset hosts", () => {
+  assert.doesNotMatch(html, /quasar-preview-assets\.floot\.app/i);
+  assert.doesNotMatch(html, /quasarmotion-site-final\.vercel\.app/i);
+});
 
-  assert.equal(response.status, 200);
-  assert.match(
-    response.headers.get("content-type") ?? "",
-    /^text\/html\b/i,
-  );
-  const html = await response.text();
-  for (const expectedMeta of brandedDocumentMeta) {
-    assert.match(html, expectedMeta);
-  }
+test("studio markup is fail-safe visible without JavaScript", () => {
+  assert.match(html, /<section id="studio" class="studio reveal">/i);
+  assert.doesNotMatch(html, /studio-armed/i);
 });

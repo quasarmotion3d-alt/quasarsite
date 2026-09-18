@@ -28,13 +28,14 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 }
 
 const studio = document.querySelector<HTMLElement>('.studio');
-if (studio) {
+if (studio && !reducedMotion) {
+  studio.classList.add('studio-motion-ready');
   let studioPlayed = false;
 
   const maybePlayStudio = () => {
     if (studioPlayed) return;
     const rect = studio.getBoundingClientRect();
-    const triggerLine = window.innerHeight * 0.72;
+    const triggerLine = window.innerHeight * 0.78;
 
     if (rect.top <= triggerLine && rect.bottom > 0) {
       studioPlayed = true;
@@ -104,7 +105,7 @@ contactForm?.addEventListener('submit', async event => {
   }
 
   try {
-    const response = await fetch('https://quasar-motion-final-preview.vercel.app/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const result = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error((result as { error?: string }).error || 'Não foi possível enviar agora.');
     contactForm.reset();
