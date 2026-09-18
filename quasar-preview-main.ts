@@ -64,7 +64,7 @@ contactForm?.addEventListener('submit', async event => {
   }
 
   try {
-    const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const response = await fetch('https://quasar-motion-final-preview.vercel.app/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const result = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error((result as { error?: string }).error || 'Não foi possível enviar agora.');
     contactForm.reset();
