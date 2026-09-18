@@ -2215,6 +2215,7 @@ body{
 .web-card:hover .web-cta b{transform:translate(3px,-2px)}
 @media(max-width:1060px){.web-card .browser{height:330px}}
 @media(max-width:740px){
+  .minerals-card{grid-column:1!important;min-height:76vw!important}
   .web-card .browser{height:300px;margin:10px 10px 0!important;width:calc(100% - 20px)!important}
   .web-card .browser-live{height:410px}
   .web-card .web-meta{min-height:112px;padding:18px!important}
@@ -2234,10 +2235,16 @@ body{
   transform:scale(1)!important;
   filter:brightness(1.025) saturate(1.06) contrast(1.02)!important;
 }
-.minerals-card{background:#0c0e12!important}
+.minerals-card{
+  grid-column:1 / -1!important;
+  grid-row:auto!important;
+  min-height:clamp(230px,27vw,390px)!important;
+  background:#0c0e12!important;
+}
 .minerals-card>img{
   transform:scale(1)!important;
   object-fit:cover!important;
+  object-position:center 58%!important;
   filter:none!important;
 }
 .minerals-card:hover>img{
@@ -2307,6 +2314,7 @@ body{
 }
 
 @media(max-width:740px){
+  .minerals-card{grid-column:1!important;min-height:76vw!important}
   .web-card .browser{
     height:300px!important;
     margin:10px 10px 0!important;
@@ -2336,12 +2344,12 @@ body{
   opacity:0;
   transform:translateY(22px);
   filter:blur(5px);
-  transition:opacity .90s ease,transform 1.18s cubic-bezier(.16,1,.3,1),filter 1.00s ease;
+  transition:opacity 1.05s ease,transform 1.42s cubic-bezier(.16,1,.3,1),filter 1.12s ease;
 }
 .studio .studio-line{
   display:block;
   clip-path:inset(0 0 100% 0);
-  transition:opacity .96s ease,transform 1.28s cubic-bezier(.16,1,.3,1),filter 1.06s ease,clip-path 1.28s cubic-bezier(.16,1,.3,1),background-position 1.55s ease;
+  transition:opacity 1.08s ease,transform 1.52s cubic-bezier(.16,1,.3,1),filter 1.16s ease,clip-path 1.52s cubic-bezier(.16,1,.3,1),background-position 1.85s ease;
 }
 .studio .studio-line--accent{transition-delay:.10s}
 .studio>p{transition-delay:.20s}
