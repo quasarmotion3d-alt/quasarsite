@@ -1913,3 +1913,231 @@ body {
   display:block !important;
   background:#000 !important;
 }
+
+
+/* ===== KINETIC REFINED PREVIEW ===== */
+
+/* Direction: energetic editorial motion, but stable pointer geometry. */
+:root{
+  --kinetic-ease:cubic-bezier(.16,1,.3,1);
+  --kinetic-soft:cubic-bezier(.22,1,.36,1);
+}
+
+/* Clean background: no stripe/grid pattern. */
+body{
+  background:
+    radial-gradient(64vw 48vw at 88% 0%,rgba(58,104,177,.10),transparent 68%),
+    radial-gradient(44vw 36vw at 5% 40%,rgba(48,74,126,.045),transparent 72%),
+    #111315 !important;
+}
+.site-shell:before{background-image:none!important;opacity:0!important}
+.hero-art .grid{opacity:.06!important}
+
+/* Header remains glassy but calm. */
+.topbar,.topbar.is-scrolled{
+  height:78px!important;
+  border-radius:14px!important;
+  background:linear-gradient(135deg,rgba(28,31,36,.72),rgba(20,22,26,.66))!important;
+  border-color:rgba(214,228,246,.18)!important;
+  backdrop-filter:blur(28px) saturate(132%)!important;
+  -webkit-backdrop-filter:blur(28px) saturate(132%)!important;
+  box-shadow:0 20px 54px rgba(0,0,0,.56),inset 0 1px 0 rgba(255,255,255,.075)!important;
+  transition:background .45s ease,border-color .4s ease,box-shadow .45s ease!important;
+}
+.topbar nav a{transition:color .28s ease!important}
+.topbar nav a:after{
+  height:2px!important;
+  bottom:12px!important;
+  background:linear-gradient(90deg,#7ad0ff,#5575ff)!important;
+  transition:transform .48s var(--kinetic-ease)!important;
+}
+
+/* Hero: preserve copy, remove parallax, use one slow image zoom. */
+.hero-art{transform:none!important}
+.hero-art>img{
+  transform:scale(1.025)!important;
+  filter:saturate(1.02) contrast(1.035) brightness(.90)!important;
+  transition:
+    transform 1.35s var(--kinetic-ease),
+    filter .75s var(--kinetic-soft)!important;
+  will-change:transform;
+}
+.hero-art:hover>img{
+  transform:scale(1.06)!important;
+  filter:saturate(1.07) contrast(1.04) brightness(.95)!important;
+}
+.hero h1 em{
+  background-size:210% 100%!important;
+  animation:kineticAccent 6s ease-in-out infinite alternate;
+}
+@keyframes kineticAccent{
+  from{background-position:100% 50%}
+  to{background-position:0% 50%}
+}
+
+/* Stable card hitboxes — this removes the edge-hover pulse bug. */
+.project,
+.vertical,
+.web-grid article,
+.service-grid a{
+  transform:none!important;
+  --rx:0deg!important;
+  --ry:0deg!important;
+  transition:
+    border-color .34s ease,
+    background .42s var(--kinetic-soft),
+    box-shadow .48s var(--kinetic-soft)!important;
+}
+.project:hover,
+.vertical:hover,
+.web-grid article:hover,
+.service-grid a:hover{
+  transform:none!important;
+  border-color:rgba(112,195,255,.34)!important;
+  box-shadow:
+    0 30px 76px rgba(0,0,0,.58),
+    0 0 0 1px rgba(101,181,255,.07),
+    0 0 34px rgba(62,133,225,.07),
+    inset 0 1px 0 rgba(255,255,255,.07)!important;
+}
+
+/* Only the visual inside the card moves. */
+.project>img,
+.vertical>img,
+.reel-poster img{
+  transform:scale(1.012)!important;
+  transition:
+    transform 1.08s var(--kinetic-ease),
+    filter .68s var(--kinetic-soft)!important;
+  will-change:transform;
+}
+.project:hover>img,
+.vertical:hover>img,
+.reel-poster:hover img{
+  transform:scale(1.048)!important;
+  filter:brightness(1.035) saturate(1.10) contrast(1.025)!important;
+}
+.web-grid article .browser{
+  transform:scale(1);
+  transform-origin:center;
+  transition:transform 1s var(--kinetic-ease)!important;
+}
+.web-grid article:hover .browser{transform:scale(1.022)}
+
+/* Small copy movement provides kinetic feedback without changing the hitbox. */
+.project-info,
+.vertical>span,
+.web-meta{
+  transform:none!important;
+  transition:transform .58s var(--kinetic-ease),opacity .4s ease!important;
+}
+.project:hover .project-info,
+.vertical:hover>span{transform:translateY(-4px)!important}
+.web-grid article:hover .web-meta{transform:translateY(-2px)!important}
+
+/* Remove continuous pulse loops from cards/partners. */
+.service-grid a:after,
+.lumos-partner:before,
+.lumos-partner:after{
+  animation:none!important;
+}
+.service-grid a:before{
+  opacity:.18!important;
+  filter:blur(3px)!important;
+  transition:opacity .42s ease,filter .5s ease!important;
+}
+.service-grid a:hover:before{
+  opacity:.82!important;
+  filter:blur(6px)!important;
+}
+.service-grid a:hover:after{
+  opacity:.34!important;
+  transform:scale(1)!important;
+}
+.lumos-partner:before{opacity:.42!important}
+.lumos-partner:after{
+  left:-22%!important;
+  opacity:0!important;
+  transition:left .9s var(--kinetic-ease),opacity .35s ease!important;
+}
+.lumos-partner:hover:after{
+  left:115%!important;
+  opacity:.72!important;
+}
+
+/* Buttons move only a couple pixels and settle smoothly. */
+.btn,
+.contact-form button,
+.lumos-whatsapp{
+  transition:
+    transform .42s var(--kinetic-ease),
+    border-color .3s ease,
+    background .36s ease,
+    box-shadow .42s ease!important;
+}
+.btn:hover,
+.contact-form button:hover,
+.lumos-whatsapp:hover{transform:translateY(-2px)!important}
+
+/* One-time section/card entrances instead of perpetual movement. */
+.work.is-visible .project,
+.websites.is-visible .web-grid article,
+.ai.is-visible .vertical{
+  animation:kineticCardIn .78s var(--kinetic-ease) both!important;
+}
+.work.is-visible .project:nth-child(3n+2),
+.websites.is-visible .web-grid article:nth-child(2),
+.ai.is-visible .vertical:nth-child(2){animation-delay:.07s!important}
+.work.is-visible .project:nth-child(3n),
+.websites.is-visible .web-grid article:nth-child(3),
+.ai.is-visible .vertical:nth-child(3){animation-delay:.14s!important}
+@keyframes kineticCardIn{
+  from{opacity:0;transform:translateY(26px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+
+/* Contact form is fully contained; no more horizontal overflow. */
+.contact,.contact-form,.contact-form__grid,.contact-form label{
+  min-width:0!important;
+  max-width:100%!important;
+}
+.contact-form{
+  width:100%!important;
+  overflow:hidden!important;
+}
+.contact-form input,
+.contact-form textarea{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+.contact-form textarea{resize:vertical}
+
+/* Mobile: same direction, no expensive hover transforms. */
+@media(max-width:980px){
+  .topbar,.topbar.is-scrolled{height:72px!important}
+}
+@media(max-width:740px){
+  .topbar,.topbar.is-scrolled{height:64px!important}
+  .project>img,.vertical>img,.reel-poster img{transform:scale(1.01)!important}
+  .project:hover>img,.vertical:hover>img,.reel-poster:hover img{transform:scale(1.01)!important}
+  .web-grid article:hover .browser{transform:none}
+}
+@media(hover:none),(pointer:coarse){
+  .project:hover,
+  .vertical:hover,
+  .web-grid article:hover,
+  .service-grid a:hover,
+  .btn:hover,
+  .contact-form button:hover,
+  .lumos-whatsapp:hover{transform:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero h1 em{animation:none!important}
+  .project>img,.vertical>img,.reel-poster img,.web-grid article .browser{
+    transition:none!important;
+    transform:none!important;
+  }
+}
