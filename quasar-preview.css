@@ -2343,9 +2343,9 @@ body{
 .studio-armed .studio-line,
 .studio-armed>p,
 .studio-armed .team{
-  opacity:0!important;
-  transform:translateY(34px)!important;
-  filter:blur(8px)!important;
+  opacity:0;
+  transform:translateY(34px);
+  filter:blur(8px);
 }
 .studio-armed .studio-line{
   display:block;
