@@ -6,7 +6,7 @@
     "node": "24.x"
   },
   "scripts": {
-    "build": "vite build --config vite.vercel.config.ts"
+    "build": "node scripts/fetch-fried-thumb.mjs && vite build --config vite.vercel.config.ts"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
