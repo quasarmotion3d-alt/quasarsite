@@ -12,7 +12,7 @@ import './quasar-preview.css';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-const revealNodes = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
+const revealNodes = Array.from(document.querySelectorAll<HTMLElement>('.reveal:not(.studio)'));
 
 if (reducedMotion || !('IntersectionObserver' in window)) {
   revealNodes.forEach(node => node.classList.add('is-visible'));
@@ -35,10 +35,12 @@ if (studio) {
     const studioObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        studio.classList.add('studio-near');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => studio.classList.add('studio-near'));
+        });
         studioObserver.disconnect();
       });
-    }, { threshold: 0.01, rootMargin: '0px 0px 32% 0px' });
+    }, { threshold: 0.01, rootMargin: '0px 0px 120px 0px' });
     studioObserver.observe(studio);
   }
 }
