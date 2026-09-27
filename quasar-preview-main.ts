@@ -130,7 +130,7 @@ contactForm?.addEventListener('submit', async event => {
 });
 
 type ProjectMedia = { videos?: string[]; images?: string[] };
-const assetUrl = (name: string) => `https://quasarmotion.com.br/assets/${name}`;
+const assetUrl = (name: string) => `/assets/${name}`;
 const portfolioMedia: Record<string, ProjectMedia> = {
   'Tesla solar panels': { videos: ['1222178036'] },
   'EquipeAgro': { videos: ['1222188457'] },

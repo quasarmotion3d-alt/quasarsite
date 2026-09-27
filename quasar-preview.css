@@ -2681,3 +2681,60 @@ body{
     font-size:8.5px!important;
   }
 }
+
+/* Quasar review: steady service cards, readable hover and compact navigation. */
+.service-grid a {
+  min-width: 0;
+  background: linear-gradient(145deg, rgba(38, 43, 51, .78), rgba(19, 23, 30, .88)) !important;
+  border-color: rgba(180, 206, 236, .20) !important;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .30), inset 0 1px rgba(255, 255, 255, .06) !important;
+}
+.service-grid a::before {
+  background: radial-gradient(420px circle at var(--px, 50%) var(--py, 50%), rgba(75, 160, 246, .18), transparent 65%) !important;
+  opacity: .18 !important;
+  filter: none !important;
+  transition: opacity .3s ease !important;
+}
+.service-grid a::after { content: none !important; }
+.service-grid small { color: #91a5bb; }
+.service-grid span { color: #b4c0d0; line-height: 1.45; }
+.service-grid strong { line-height: 1.08; }
+.project, .vertical, .web-card, .service-grid a { box-shadow: 0 16px 38px rgba(0, 0, 0, .30) !important; }
+.project::before, .vertical::before { content: none !important; }
+.project > img, .vertical > img { display: block; }
+.project:hover > img, .vertical:hover > img { filter: brightness(1.035) saturate(1.04) !important; }
+.project-info, .vertical > span, .web-card .web-meta { transform: none !important; }
+@media (hover: hover) and (pointer: fine) {
+  .service-grid a:hover, .service-grid a:focus-visible,
+  .project:hover, .project:focus-visible,
+  .vertical:hover, .vertical:focus-visible,
+  .web-card:hover, .web-card:focus-visible {
+    border-color: rgba(109, 184, 255, .58) !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, .39), 0 0 0 1px rgba(86, 169, 255, .10) !important;
+  }
+  .service-grid a:hover::before, .service-grid a:focus-visible::before { opacity: .8 !important; }
+}
+@media (hover: none), (pointer: coarse) {
+  .service-grid a:hover, .project:hover, .vertical:hover, .web-card:hover {
+    border-color: rgba(180, 206, 236, .20) !important;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, .30) !important;
+  }
+  .service-grid a:hover::before { opacity: .18 !important; }
+  .project:hover > img, .vertical:hover > img { filter: none !important; }
+  .project:hover .project-info, .vertical:hover > span, .web-card:hover .web-meta { transform: none !important; }
+}
+@media (max-width: 740px) {
+  .service-grid a { min-height: 140px !important; padding: 24px !important; }
+  .service-grid small { top: 18px; left: 24px; }
+  .service-grid strong { font-size: clamp(30px, 8vw, 42px); }
+  .topbar nav a:nth-child(3) { display: flex !important; }
+  .brand { width: min(120px, 34vw) !important; flex: 0 1 min(120px, 34vw) !important; }
+  .topbar nav { min-width: 0; }
+  .topbar nav a { padding: 0 3px !important; font-size: 10px !important; white-space: nowrap; }
+  .email { padding: 16px 12px !important; gap: 10px !important; font-size: clamp(13px, 4vw, 18px) !important; }
+  .email > span { width: auto; overflow-wrap: anywhere; }
+}
+@media (max-width: 360px) {
+  .brand { width: 95px !important; flex-basis: 95px !important; }
+  .topbar nav a { font-size: 9px !important; padding: 0 2px !important; }
+}
